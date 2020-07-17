@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
+html {
+  margin: 0;
+  padding: 0; 
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 400;
+  color: #333;
+}
+
+* {
+  outline: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; 
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+  vertical-align: middle; 
+}
+
+a {
+  text-decoration: none;
+  color: #66a55f;
+  -webkit-transition: all 0.15s ease-out;
+  -moz-transition: all 0.15s ease-out;
+  -o-transition: all 0.15s ease-out;
+  transition: all 0.15s ease-out; 
+}
+
+.sec {
+  display: block;
+  float: left;
+  width: 100%;
+  text-align: center;
+}
+
+.container {
+    display: inline-block;
+    width: 1275px;
+    text-align: left;
+}
+
+.content_sec {
+  margin-top: 60px;
+}
+
+.row {
+  display: inline-block;
+  float: left;
+  width: 100%;
+}
+
+.ib {
+  display: inline-block;
+}
+
+.fleft {
+  float: left;
+}
+
+.fright {
+  float: right;
+}
+
+.tcenter {
+  text-align: center;
+}
+
+.tred {
+  color: #ff0000;
+}
+
+form {
+  display: inline-block;
+}
+
+.input_row {
+  display: inline-block;
+  float: left;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.input_row:last-child {
+  margin-bottom: 0;
+}
+
+.input_text {
+    display: inline-block;
+    height: 40px;
+    padding: 0 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    -webkit-transition: all 0.15s ease-out;
+    -moz-transition: all 0.15s ease-out;
+    -o-transition: all 0.15s ease-out;
+    transition: all 0.15s ease-out;
+    vertical-align: middle;
+}
+
+.input_text:focus{
+  border-color: #66a55f; 
+}
+
+.input_text:disabled {
+  background-color: #ddd;
+}
+
+.lbl {
+  display: inline-block;
+  float: left;
+  width: 100%;
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #66a55f;
+  border: none;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.btn:hover {
+  background-color: #333;
+}
+

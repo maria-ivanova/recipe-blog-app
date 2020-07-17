@@ -1,0 +1,10 @@
+.user_form {
+    width: 40%;
+    padding: 30px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .user_form .input_text {
+    width: 100%;
+  }

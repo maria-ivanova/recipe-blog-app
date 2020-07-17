@@ -1,0 +1,42 @@
+.search_form {
+    position: relative;
+  }
+  
+  .search_form .input_text {
+    width: 400px;
+    height: 50px;
+  }
+  
+  .search_form .btn {
+    position: absolute;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    top: 0;
+    right: 0;
+    border: none;
+    background: url(../images/i_search.svg) no-repeat center center;
+    background-size: 20px auto;
+    font-size: 20px;
+    text-align: center;
+    -webkit-transition: all 0.15s ease-out;
+    -moz-transition: all 0.15s ease-out;
+    -o-transition: all 0.15s ease-out;
+    transition: all 0.15s ease-out;
+  }
+  
+  .search_form .btn::before {
+    position: absolute;
+    display: inline-block;
+    content: '';
+    top: 13px;
+    left: 0;
+    height: 25px;
+    width: 1px;
+    background-color: #ddd;
+  }
+  
+  .search_form .btn:hover {
+    background-image: url(../images/i_search_hover.svg);
+  }

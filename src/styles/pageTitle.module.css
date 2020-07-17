@@ -1,0 +1,28 @@
+.page_title {
+    display: inline-block;
+    float: left;
+    width: 100%;
+    margin: 0 0 70px 0;
+    font-size: 38px;
+    line-height: 48px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  
+  .page_title span {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .page_title span::after {
+    position: absolute;
+    display: inline-block;
+    content: '';
+    left: 50%;
+    bottom: -10px;
+    margin-left: -30%;
+    width: 60%;
+    height: 2px;
+    background-color: #66a55f;
+  }

@@ -1,0 +1,22 @@
+.nav_sec {
+    background-color: #66a55f;
+  }
+  
+  .topmenu {
+    display: inline-block;
+    width: 100%;
+  }
+  
+  
+  .topmenu a {
+    display: inline-block;
+    padding: 15px 30px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+  }
+  
+  .topmenu a:hover,
+  .topmenu a.current {
+    color: #333;
+  }

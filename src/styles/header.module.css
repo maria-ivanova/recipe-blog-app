@@ -1,0 +1,119 @@
+.header_sec {
+    padding: 20px 0;
+    background-color: #f5f5f5;
+  }
+  
+  .header_sec .container {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    margin: auto;
+  }
+  
+  .header_sec .logo {
+    float: left;
+  }
+
+  .header_right {
+    display: inline-block;
+    float: right;
+  }
+  
+  .header_right .menu {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  
+  .header_right .menu li {
+    position: relative;
+    display: inline-block;
+    float: left;
+    padding: 0 10px;
+    font-weight: 700;
+    color: #333;
+    text-transform: uppercase;
+  }
+  
+  .header_right .menu > li::after {
+    position: absolute;
+    display: inline-block;
+    content: '';
+    width: 1px;
+    height: 15px;
+    top: 50%;
+    right: -1px;
+    margin-top: -7px;
+    background-color: #bdbdbd;
+  }
+  
+  .header_right li:last-child::after {
+    display: none;
+    padding-right: 0;
+  }
+  
+  .header_right .menu li .fa {
+    margin-left: 5px;
+    vertical-align: -0.150em;
+  }
+  
+  .header_right .menu a {
+    font-weight: 700;
+    color: #333;
+    text-transform: uppercase;
+  }
+  
+  .header_right a:hover {
+    color: #66a55f;
+  }
+  
+  .header_right .submenu {
+      position: absolute;
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      top: 100%;
+      left: 0;
+      margin-top: 10px;
+      width: 250px;
+      background-color: #fff;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, .1);
+      border-top: 3px solid #66a55f;
+      opacity: 0;
+      visibility: hidden;
+      z-index: 1000;
+  }
+  
+  .header_right .submenu li {
+      display: inline-block;
+      float: left;
+      width: 100%;
+      padding: 0;
+      border-bottom: 1px solid #ddd;
+  }
+  
+  .header_right .submenu li a {
+      display: inline-block;
+      float: left;
+      width: 100%;
+      padding: 10px 15px;
+      text-transform: none;
+  }
+  
+  .header_right .menu > li:hover .submenu {
+    opacity: 1;
+    visibility: visible;
+  }

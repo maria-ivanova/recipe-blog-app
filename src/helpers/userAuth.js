@@ -3,14 +3,12 @@ import { databaseURL, usersDB} from "../constants/db.js";
 
 const registerUser = (email, password) => auth.createUserWithEmailAndPassword(email, password);
  
-const createUser = (data) =>  {
-    return fetch(`${databaseURL}/${usersDB}.json`, {
+const createUser = (uid, data) =>  {
+    return fetch(`${databaseURL}/${usersDB}/${uid}.json`, {
         method: "POST",
         headers: { 'Content-type': 'application/json' },
         body: JSON.stringify(data)
     })
-    .then(response => console.log('User created successfully'))
-    .catch(error => console.log(error))
 };
 
 const loginUser = (email, password) => auth.signInWithEmailAndPassword(email, password);

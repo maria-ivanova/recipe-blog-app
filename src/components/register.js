@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { registerUser } from '../helpers/userAuth.js';
+import { registerUser, createUser } from '../helpers/userAuth.js';
 import { firebaseErrors, customErrors } from '../constants/errors.js';
 import ROUTES from '../constants/routes.js';
 
@@ -43,12 +43,18 @@ class Register extends Component {
 
         registerUser(email, password)
             .then((response) => {
+                const uid = response.user.uid;
+                const data = { username, email };
+
                 if (response) {
                     response.user.updateProfile({
                         displayName: username
                     })
                 }
 
+                createUser(uid, data);
+            })
+            .then(() => {
                 this.setState({ ...INITIAL_STATE });
                 this.props.history.push(ROUTES.HOME);
             })

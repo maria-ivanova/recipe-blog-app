@@ -36,7 +36,7 @@ class Login extends Component {
         loginUser(email, password)
         .then(response => {
             this.setState({...INITIAL_STATE});
-            this.props.history.push(ROUTES.HOME);
+            this.props.history.push(ROUTES.PROFILE);
         })
         .catch(error => {
             this.setState({
@@ -91,7 +91,7 @@ class Login extends Component {
                             </button>
                         </div>
 
-                        <div className={`${mainStyles.input_row} ${styles.mtop10}`}>
+                        <div className={mainStyles.input_row}>
                             Все още нямаш профил? <Link to={ROUTES.REGISTER}>Регистрирай се</Link>
                         </div>
                     </form>

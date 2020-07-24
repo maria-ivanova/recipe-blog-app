@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { passwordUpdate } from '../helpers/userAuth.js';
 import { firebaseErrors, customErrors } from '../constants/errors.js';
 import { AuthUserContext } from '../context/context.js';
+import WithAuthorization from './withAuthorization.js';
 import ROUTES from '../constants/routes.js';
 
 import PageTitle from './pageTitle.js';
@@ -17,19 +18,6 @@ let INITIAL_STATE = {
     rePassword: '',
     errorMsg: null
 }
-
-const currentUser = JSON.parse(localStorage.getItem('user'));
-
-if (currentUser) {
-    INITIAL_STATE = {
-        username: currentUser.displayName,
-        email: currentUser.email,
-        password: '',
-        rePassword: '',
-        errorMsg: null
-    }
-}
-
 
 class Profile extends Component {
     static contextType = AuthUserContext;
@@ -73,7 +61,11 @@ class Profile extends Component {
 
         passwordUpdate(password)
             .then(response => {
-                this.setState({ ...INITIAL_STATE });
+                this.setState({
+                    password: '',
+                    rePassword: '',
+                    errorMsg: null
+                });
                 this.props.history.push(ROUTES.PROFILE);
             })
             .catch(error => {
@@ -161,4 +153,5 @@ class Profile extends Component {
     }
 }
 
-export default Profile;
+const condition = authUser => authUser != null;
+export default WithAuthorization(condition, Profile);

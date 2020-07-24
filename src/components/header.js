@@ -39,7 +39,7 @@ class Header extends Component {
 								</li>
 
 								<li>
-									<Link to={ROUTES.HOME} onClick={logout}>Изход</Link>
+									<Link to={ROUTES.LOGIN} onClick={logout}>Изход</Link>
 								</li>
 							</ul>
 							:

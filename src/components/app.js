@@ -17,7 +17,7 @@ import Register from './register.js';
 import Profile from './profile.js';
 import NotFound from './notFound.js';
 
-library.add(faChevronDown, faUser, faHeart)
+library.add(faChevronDown, faUser, faHeart);
 
 class App extends Component {
   constructor(props) {
@@ -31,7 +31,6 @@ class App extends Component {
   componentDidMount() {
     auth.onAuthStateChanged(authUser => {
       this.setState({ authUser });
-      localStorage.setItem('user', JSON.stringify(authUser));
     })
   }
 

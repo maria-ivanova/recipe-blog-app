@@ -1,4 +1,3 @@
-import { auth } from "../services/firebase.js";
 import { databaseURL, recipeDB} from "../constants/db.js";
 
 const postCreate = (data) =>  {
@@ -7,10 +6,14 @@ const postCreate = (data) =>  {
         headers: { 'Content-type': 'application/json' },
         body: JSON.stringify(data)
     })
-
-
 };
 
+const getData = () => {
+    return fetch(`${databaseURL}/${recipeDB}.json`).then(response => response.json())
+}
+
+
 export {
-    postCreate
+    postCreate,
+    getData
 }

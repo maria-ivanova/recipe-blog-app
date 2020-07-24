@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { postCreate } from '../helpers/firebaseRequests.js';
+import { storage } from "../services/firebase.js";
 import { firebaseErrors, customErrors } from '../constants/errors.js';
 import ROUTES from '../constants/routes.js';
 
@@ -16,14 +17,17 @@ import styles from '../styles/create.module.css';
 
 const INITIAL_STATE = {
     creatorId: '',
+    creatorName: '',
+    createdDate: Date.now(),
     title: '',
     category: 'salad',
     totalTime: '',
     yields: '',
+    image: null,
     imageUrl: '',
     ingredients: '',
     recipeDescription: '',
-    likes: []
+    likes: null
 }
 
 class Create extends Component {
@@ -40,7 +44,8 @@ class Create extends Component {
 
         if (userContext) {
             this.setState({
-                creatorId: userContext.uid
+                creatorId: userContext.uid,
+                creatorName: userContext.displayName
             })
         }
     }
@@ -51,31 +56,63 @@ class Create extends Component {
         })
     }
 
-    submitHandler = (event) => {
-        event.preventDefault();
-        const data = this.state;
+    imageHandler = async (event) => {
+        if (event.target.files[0]) {
+            const image = event.target.files[0];
+            await this.setState(() => ({ image }));
+        }
+    }
 
-        postCreate(data)
-        .then(response => {
-            this.setState({...INITIAL_STATE});
-            this.props.history.push(ROUTES.CREATE);
-        })
-        .catch(error => {
+    submitHandler = async (event) => {
+        event.preventDefault();
+
+        const { image } = this.state;
+        const uploadTask = storage.ref(`images/${image.name}`).put(image);
+
+        uploadTask.on('state_changed', (snapshot) => {
+            console.log(snapshot);
+
+        }, (error) => {
             this.setState({
-                //errorMsg: customErrors['wrongUserPassword'] || error.message
+                errorMsg: customErrors['failedCreate']
             })
+
+        }, () => {
+            storage
+                .ref("images")
+                .child(image.name)
+                .getDownloadURL()
+                .then(imageUrl => {
+                    this.setState({ imageUrl });
+
+                    const data = this.state;
+
+                    postCreate(data)
+                        .then(response => {
+                            this.setState({ ...INITIAL_STATE });
+                            this.props.history.push(ROUTES.CREATE);
+                        })
+                        .catch(error => {
+                            this.setState({
+                                errorMsg: customErrors['failedCreate']
+                            })
+                        })
+                });
         })
     }
 
     render() {
         const {
+            creatorId,
             title,
             category,
             totalTime,
             yields,
+            image,
             imageUrl,
             ingredients,
-            recipeDescription
+            recipeDescription,
+            likes: []
         } = this.state;
 
         return (
@@ -147,12 +184,19 @@ class Create extends Component {
                             </label>
 
                             <span className={styles.img_holder}>
-                                <span>Все още няма качена снимка</span>
+                                {imageUrl ?
+                                    <img src={imageUrl} alt="recipe image" />
+                                    :
+                                    <span>
+                                        {image ? image.name : 'Все още няма качена снимка'}
+                                    </span>
+                                }
+
                             </span>
 
                             <label className={`${mainStyles.btn} ${styles.upload_btn}`}>
                                 <input type="file"
-                                    name="uploadedImage" />
+                                    onChange={this.imageHandler} />
                                 <FontAwesomeIcon icon="upload" className={styles.fa} />
 								качи
 							</label>

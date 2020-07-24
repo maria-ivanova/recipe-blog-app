@@ -12,7 +12,7 @@ const Home = () => {
             <IndexBanner />
 
             <PageTitleContext.Provider value="нови рецепти">
-                <ItemsList />
+                <ItemsList sortCriterion="createdDate"/>
             </PageTitleContext.Provider>
 
             <PageTitleContext.Provider value=" За нас">
@@ -20,7 +20,7 @@ const Home = () => {
             </PageTitleContext.Provider>
 
             <PageTitleContext.Provider value="най-харесвани рецепти">
-                <ItemsList />
+                <ItemsList sortCriterion="likes"/>
             </PageTitleContext.Provider>
         </Fragment>
     )

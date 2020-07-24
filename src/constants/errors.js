@@ -7,5 +7,6 @@ export const firebaseErrors = {
 
 export const customErrors = {
     'badPassword': 'Паролата трябва да съвпада с повторената парола!',
-    'wrongUserPassword': 'Грешно потребителско име или парола!'
+    'wrongUserPassword': 'Грешно потребителско име или парола!',
+    'failedCreate': 'Неуспещно създаване на рецепта!'
 }

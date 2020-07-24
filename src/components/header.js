@@ -28,7 +28,9 @@ class Header extends Component {
 								<li>
 									<a>{this.context.email} <FontAwesomeIcon icon="chevron-down" className={styles.fa} /></a>
 									<ul className={styles.submenu}>
-										<li><a href="">Създай рецепта</a></li>
+										<li>
+											<Link to={ROUTES.CREATE}>Създай рецепта</Link>
+										</li>
 
 										<li><a href="">Моите рецепти</a></li>
 

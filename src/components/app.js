@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faChevronDown, faUser, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faUser, faHeart, faUpload } from '@fortawesome/free-solid-svg-icons';
 
 import { AuthUserContext } from '../context/context.js';
 import { auth } from "../services/firebase.js";
@@ -15,9 +15,10 @@ import Home from './home.js';
 import Login from './login.js';
 import Register from './register.js';
 import Profile from './profile.js';
+import Create from './create.js';
 import NotFound from './notFound.js';
 
-library.add(faChevronDown, faUser, faHeart);
+library.add(faChevronDown, faUser, faHeart, faUpload);
 
 class App extends Component {
   constructor(props) {
@@ -46,6 +47,7 @@ class App extends Component {
             <Route path={ROUTES.LOGIN} component={Login} />
             <Route path={ROUTES.REGISTER} component={Register} />
             <Route path={ROUTES.PROFILE} component={Profile} />
+            <Route path={ROUTES.CREATE} component={Create} />
             <Route path="" component={NotFound} />
           </Switch>
 

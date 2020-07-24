@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import { registerUser } from '../helpers/userAuth.js';
+import { passwordUpdate } from '../helpers/userAuth.js';
 import { firebaseErrors, customErrors } from '../constants/errors.js';
+import { AuthUserContext } from '../context/context.js';
 import ROUTES from '../constants/routes.js';
 
 import PageTitle from './pageTitle.js';
 import { PageTitleContext } from '../context/context.js';
 
 import mainStyles from '../styles/app.module.css';
-import styles from '../styles/register.module.css';
+import styles from '../styles/profile.module.css';
 
-const INITIAL_STATE = {
+let INITIAL_STATE = {
     username: '',
     email: '',
     password: '',
@@ -17,11 +18,40 @@ const INITIAL_STATE = {
     errorMsg: null
 }
 
-class Register extends Component {
+const currentUser = JSON.parse(localStorage.getItem('user'));
+
+if (currentUser) {
+    INITIAL_STATE = {
+        username: currentUser.displayName,
+        email: currentUser.email,
+        password: '',
+        rePassword: '',
+        errorMsg: null
+    }
+}
+
+
+class Profile extends Component {
+    static contextType = AuthUserContext;
+
     constructor(props) {
         super(props)
 
         this.state = { ...INITIAL_STATE };
+    }
+
+    componentDidMount() {
+        const userContext = this.context;
+
+        if (userContext) {
+            this.setState({
+                username: userContext.displayName,
+                email: userContext.email,
+                password: '',
+                rePassword: '',
+                errorMsg: null
+            })
+        }
     }
 
     changeHandler = (event) => {
@@ -32,7 +62,7 @@ class Register extends Component {
 
     submitHandler = (event) => {
         event.preventDefault();
-        const { email, username, password, rePassword } = this.state;
+        const { password, rePassword } = this.state;
 
         if (password !== rePassword) {
             this.setState({
@@ -41,16 +71,10 @@ class Register extends Component {
             return;
         }
 
-        registerUser(email, password)
-            .then((response) => {
-                if (response) {
-                    response.user.updateProfile({
-                        displayName: username
-                    })
-                }
-
+        passwordUpdate(password)
+            .then(response => {
                 this.setState({ ...INITIAL_STATE });
-                this.props.history.push(ROUTES.HOME);
+                this.props.history.push(ROUTES.PROFILE);
             })
             .catch(error => {
                 this.setState({
@@ -66,11 +90,11 @@ class Register extends Component {
             <section className={`${mainStyles.sec} ${mainStyles.content_sec}`}>
                 <div className={`${mainStyles.container} ${mainStyles.tcenter}`}>
 
-                    <PageTitleContext.Provider value="Регистрация">
+                    <PageTitleContext.Provider value="Профил">
                         <PageTitle />
                     </PageTitleContext.Provider>
 
-                    <form onSubmit={this.submitHandler} className={styles.user_form}>
+                    <form onSubmit={this.submitHandler} className={styles.profile_form}>
                         {errorMsg ? <div className={mainStyles.errorMsg}>{errorMsg}</div> : null}
 
                         <div className={mainStyles.input_row}>
@@ -83,7 +107,7 @@ class Register extends Component {
                                 value={username}
                                 onChange={this.changeHandler}
                                 className={`${mainStyles.input_text} ${styles.input_text}`}
-                                required />
+                                disabled />
                         </div>
 
                         <div className={mainStyles.input_row}>
@@ -96,7 +120,7 @@ class Register extends Component {
                                 value={email}
                                 onChange={this.changeHandler}
                                 className={`${mainStyles.input_text} ${styles.input_text}`}
-                                required />
+                                disabled />
                         </div>
 
                         <div className={mainStyles.input_row}>
@@ -127,7 +151,7 @@ class Register extends Component {
 
                         <div className={mainStyles.input_row}>
                             <button type="submit" className={mainStyles.btn}>
-                                Регистрирай се
+                                Редактирай
                             </button>
                         </div>
                     </form>
@@ -137,4 +161,4 @@ class Register extends Component {
     }
 }
 
-export default Register;
+export default Profile;

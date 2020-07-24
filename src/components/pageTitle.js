@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styles from '../styles/pageTitle.module.css';
 
-import PageTitleContext from '../context/context.js'
+import { PageTitleContext } from '../context/context.js';
 
 class PageTitle extends Component {
     static contextType = PageTitleContext;

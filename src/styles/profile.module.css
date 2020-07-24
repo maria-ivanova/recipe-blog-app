@@ -1,14 +1,11 @@
-.user_form {
-    width: 40%;
+.profile_form {
+    width: 100%;
     padding: 30px;
     border: 1px solid #ddd;
+    background-color: #f5f5f5;
     text-align: left;
   }
   
-  .user_form .input_text {
+  .profile_form .input_text {
     width: 100%;
-  }
-
-  .mtop10 {
-    margin-top: 10px;
   }

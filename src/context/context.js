@@ -1,4 +1,4 @@
 import React from 'react'
 
-const PageTitleContext = React.createContext('');
-export default PageTitleContext;
+export const PageTitleContext = React.createContext('');
+export const AuthUserContext = React.createContext(null);

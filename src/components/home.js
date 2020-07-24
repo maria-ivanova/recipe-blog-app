@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-import PageTitleContext from '../context/context.js'
+import { PageTitleContext } from '../context/context.js'
 
 import IndexBanner from './indexBanner.js';
 import ItemsList from './itemsList.js';

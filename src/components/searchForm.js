@@ -10,8 +10,8 @@ class SearchForm extends Component {
     render() {
         return (
             <form action="" method="" className={styles.search_form}>
-                <input type="text" name="search" class={`${mainStyles.input_text} ${styles.input_text}`} />
-                <button type="submit" value="search" class={styles.btn}></button>
+                <input type="text" name="search" className={`${mainStyles.input_text} ${styles.input_text}`} />
+                <button type="submit" value="search" className={styles.btn}></button>
 			</form>
         )
     } 

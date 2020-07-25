@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { postCreate } from '../helpers/firebaseRequests.js';
+import { postCreate, getCategories } from '../helpers/firebaseRequests.js';
 import { storage } from "../services/firebase.js";
 import { firebaseErrors, customErrors } from '../constants/errors.js';
 import ROUTES from '../constants/routes.js';
@@ -20,14 +20,14 @@ const INITIAL_STATE = {
     creatorName: '',
     createdDate: Date.now(),
     title: '',
-    category: 'salad',
+    category: '',
     totalTime: '',
     yields: '',
     image: null,
     imageUrl: '',
     ingredients: '',
     recipeDescription: '',
-    likes: null
+    likes: null,
 }
 
 class Create extends Component {
@@ -37,9 +37,20 @@ class Create extends Component {
         super(props)
 
         this.state = { ...INITIAL_STATE };
+        this.allCategories = [];
+    }
+
+    getAllCategories = async () => {
+        this.allCategories= Object.values(await getCategories())[0];
+
+        await this.setState({
+            category: this.allCategories[0]
+        })
     }
 
     componentDidMount() {
+        this.getAllCategories();
+
         const userContext = this.context;
 
         if (userContext) {
@@ -112,7 +123,7 @@ class Create extends Component {
             imageUrl,
             ingredients,
             recipeDescription,
-            likes: []
+            likes,
         } = this.state;
 
         return (
@@ -145,10 +156,8 @@ class Create extends Component {
                                 value={category}
                                 onChange={this.changeHandler}
                                 className={`${mainStyles.input_text} ${styles.input_text}`}>
-                                <option value="salad">Салати</option>
-                                <option value="soup">Супи</option>
-                                <option value="mainDish">Основни ястия</option>
-                                <option value="dessert">Десерти</option>
+
+                                {this.allCategories.map(el => <option key={el}>{el}</option>)}
                             </select>
                         </div>
 

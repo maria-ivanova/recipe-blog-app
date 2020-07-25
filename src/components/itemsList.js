@@ -45,8 +45,8 @@ class ItemsList extends Component {
                     <PageTitle />
 
                     <div className={styles.items_list}>
-                        {data.slice(0, 9)
-                             .sort((a, b) => b[sortCriterion] - a[sortCriterion] )
+                        {data.sort((a, b) => b[sortCriterion] - a[sortCriterion] )
+                             .slice(0, 9)
                              .map(el => <SingleItem key={el.id} value={el} />)}
                     </div>
                 </div>

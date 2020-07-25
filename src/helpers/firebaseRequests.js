@@ -1,4 +1,4 @@
-import { databaseURL, recipeDB} from "../constants/db.js";
+import { databaseURL, recipeDB, categoriesDB } from "../constants/db.js";
 
 const postCreate = (data) =>  {
     return fetch(`${databaseURL}/${recipeDB}.json`, {
@@ -12,8 +12,13 @@ const getData = () => {
     return fetch(`${databaseURL}/${recipeDB}.json`).then(response => response.json())
 }
 
+const getCategories = () => {
+    return fetch(`${databaseURL}/${categoriesDB}.json`).then(response => response.json())
+}
+
 
 export {
     postCreate,
-    getData
+    getData,
+    getCategories
 }

@@ -45,3 +45,28 @@
   .recipe_form .upload_btn input {
     display: none;
   }
+
+  .img_box {
+    position: relative;
+    display: inline-block;
+  }
+
+  .btnDeleteImg {
+    position: absolute;
+    display: inline-block;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #e21d3c;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .btnDeleteImg:hover {
+    background-color: #66a55f;
+  }

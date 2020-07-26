@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ROUTES from '../constants/routes.js';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -41,9 +42,10 @@ const MySingleItem = (props) => {
                 </div>
 
                 <div className={styles.btns_box}>
-                    <a href="" className={`${mainStyles.btn} ${styles.btn}`}>
+                    <Link to={`${ROUTES.EDIT}/${props.value.id}`}
+                        className={`${mainStyles.btn} ${styles.btn}`}>
                         Редактирай
-                        </a>
+                    </Link>
 
                     <button onClick={props.deleteHandler}
                         className={`${mainStyles.btn} ${styles.btn} ${styles.btn_del}`}>

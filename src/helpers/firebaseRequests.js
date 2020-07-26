@@ -8,6 +8,18 @@ const postCreate = (data) => {
     })
 };
 
+const postEdit = (id, data) => {
+    return fetch(`${databaseURL}/${recipeDB}/${id}.json`, {
+        method: 'PUT',
+        headers: { 'Content-type': 'application/json' },
+        body: JSON.stringify(data)
+    })
+}
+
+const getItemInfo = (id) => {
+    return fetch(`${databaseURL}/${recipeDB}/${id}.json`);
+}
+
 const getData = () => {
     return fetch(`${databaseURL}/${recipeDB}.json`).then(response => response.json())
 }
@@ -24,7 +36,9 @@ const deleteItem = (id) => {
 
 export {
     postCreate,
+    postEdit,
     getData,
     getCategories,
-    deleteItem
+    deleteItem,
+    getItemInfo
 }

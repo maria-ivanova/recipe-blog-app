@@ -37,17 +37,26 @@ class ItemsList extends Component {
 
     render() {
         const { data } = this.state;
-        const sortCriterion = this.props.sortCriterion;
+        const {sortCriterion, filerCriterion, secondFilterCriterion, hiddenPageTitle} = this.props;
 
         return (
             <section className={`${mainStyles.sec} ${mainStyles.content_sec}`}>
                 <div className={mainStyles.container}>
-                    <PageTitle />
-
+                    {hiddenPageTitle ? null : <PageTitle />}
+                    
                     <div className={styles.items_list}>
-                        {data.sort((a, b) => b[sortCriterion] - a[sortCriterion] )
-                             .slice(0, 9)
-                             .map(el => <SingleItem key={el.id} value={el} />)}
+                        {filerCriterion ?
+
+                            data.filter(el => el[filerCriterion] === secondFilterCriterion)
+                                .map(el => <SingleItem key={el.id} value={el} />)
+
+                            :
+
+                            data.sort((a, b) => b[sortCriterion] - a[sortCriterion])
+                                .slice(0, 9)
+                                .map(el => <SingleItem key={el.id} value={el} />)
+
+                        }
                     </div>
                 </div>
             </section>

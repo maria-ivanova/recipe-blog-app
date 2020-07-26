@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { getCategories } from '../helpers/firebaseRequests.js';
+import ROUTES from '../constants/routes.js';
 
 import mainStyles from '../styles/app.module.css';
 import styles from '../styles/topmenu.module.css';
@@ -28,8 +30,8 @@ class Topmenu extends Component {
 			<section className={`${mainStyles.sec} ${styles.nav_sec}`}>
 				<div className={`${mainStyles.container}`}>
 					<nav className={styles.topmenu}>
-						<a href="" className={styles.current}>Начало</a>
-						{this.allCategories.map(el => <a href="" key={el}>{el}</a>)}
+						<Link to={ROUTES.HOME}>Начало</Link>
+						{this.allCategories.map(el => <Link to={`${ROUTES.RECIPES}/${el}`} key={el}>{el}</Link>)}
 						<a href="">За нас</a>
 					</nav>
 				</div>

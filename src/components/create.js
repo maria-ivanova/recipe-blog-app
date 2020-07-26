@@ -28,6 +28,7 @@ const INITIAL_STATE = {
     ingredients: '',
     recipeDescription: '',
     likes: null,
+    errorMsg: null,
 }
 
 class Create extends Component {
@@ -41,7 +42,7 @@ class Create extends Component {
     }
 
     getAllCategories = async () => {
-        this.allCategories= Object.values(await getCategories())[0];
+        this.allCategories = Object.values(await getCategories())[0];
 
         await this.setState({
             category: this.allCategories[0]
@@ -97,6 +98,7 @@ class Create extends Component {
                     this.setState({ imageUrl });
 
                     const data = this.state;
+                    delete data['errorMsg'];
 
                     postCreate(data)
                         .then(response => {
@@ -124,6 +126,7 @@ class Create extends Component {
             ingredients,
             recipeDescription,
             likes,
+            errorMsg
         } = this.state;
 
         return (
@@ -134,6 +137,8 @@ class Create extends Component {
                     </PageTitleContext.Provider>
 
                     <form onSubmit={this.submitHandler} className={styles.recipe_form}>
+                        {errorMsg ? <div className={mainStyles.errorMsg}>{errorMsg}</div> : null}
+
                         <div className={mainStyles.input_row}>
                             <label className={mainStyles.lbl}>
                                 Заглавие <span className={mainStyles.tred}>*</span>

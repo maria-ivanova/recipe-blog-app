@@ -11,5 +11,5 @@ export default {
     REGISTER,
     PROFILE,
     CREATE,
-    RECIPES
+    RECIPES,
 }

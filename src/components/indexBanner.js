@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import ROUTES from '../constants/routes.js';
 
 import mainStyles from '../styles/app.module.css';
 import styles from '../styles/indexBanner.module.css';
@@ -12,7 +14,10 @@ const IndexBanner = () => {
                     <span>Spatulas.bg</span>
                 </h2>
 
-                <a href="" className={`${mainStyles.btn} ${styles.btn}`}>Всички рецепти</a>
+                <Link to={`${ROUTES.RECIPES}/Всички рецепти`}
+                      className={`${mainStyles.btn} ${styles.btn}`}>
+                    Всички рецепти
+                </Link>
             </div>
         </section>
     )

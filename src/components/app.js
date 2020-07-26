@@ -16,6 +16,7 @@ import Login from './login.js';
 import Register from './register.js';
 import Profile from './profile.js';
 import Create from './create.js';
+import MyItems from './myItems.js';
 import ListPage from './listPage.js';
 import NotFound from './notFound.js';
 
@@ -49,6 +50,7 @@ class App extends Component {
             <Route path={ROUTES.REGISTER} component={Register} />
             <Route path={ROUTES.PROFILE} component={Profile} />
             <Route path={ROUTES.CREATE} component={Create} />
+            <Route path={ROUTES.MY_RECIPES} component={MyItems} />
             <Route path={`${ROUTES.RECIPES}/:categoryName`} component={ListPage} />
             <Route path="" component={NotFound} />
           </Switch>

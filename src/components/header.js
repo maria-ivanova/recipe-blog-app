@@ -32,7 +32,9 @@ class Header extends Component {
 											<Link to={ROUTES.CREATE}>Създай рецепта</Link>
 										</li>
 
-										<li><a href="">Моите рецепти</a></li>
+										<li>
+											<Link to={ROUTES.MY_RECIPES}>Моите рецепти</Link>
+										</li>
 
 										<li>
 											<Link to={ROUTES.PROFILE}>Профил</Link>

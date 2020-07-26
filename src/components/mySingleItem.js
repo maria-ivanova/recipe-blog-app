@@ -1,9 +1,12 @@
 import React from 'react';
-import styles from '../styles/singleItem.module.css';
+import ROUTES from '../constants/routes.js';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const SingleItem = (props) => {
+import mainStyles from '../styles/app.module.css';
+import styles from '../styles/mySingleItem.module.css';
+
+const MySingleItem = (props) => {
     return (
         <div className={styles.item}>
             <a href="" className={styles.item_img}>
@@ -36,10 +39,23 @@ const SingleItem = (props) => {
                         <span>{props.value.likes}</span>
                     </span>
                 </div>
+
+                <div className={styles.btns_box}>
+                    <a href="" className={`${mainStyles.btn} ${styles.btn}`}>
+                        Редактирай
+                        </a>
+
+                    <button onClick={props.deleteHandler}
+                        className={`${mainStyles.btn} ${styles.btn} ${styles.btn_del}`}>
+                        Изтрий
+                    </button>
+                </div>
             </div>
         </div>
     )
 }
 
-export default SingleItem;
+
+
+export default MySingleItem;
 

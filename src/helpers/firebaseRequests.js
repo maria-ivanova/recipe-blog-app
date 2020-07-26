@@ -12,13 +12,19 @@ const getData = () => {
     return fetch(`${databaseURL}/${recipeDB}.json`).then(response => response.json())
 }
 
-
 const getCategories = () => {
     return fetch(`${databaseURL}/${categoriesDB}.json`).then(response => response.json())
+}
+
+const deleteItem = (id) => {
+    return fetch(`${databaseURL}/${recipeDB}/${id}.json`, {
+        method: 'DELETE'
+    })
 }
 
 export {
     postCreate,
     getData,
     getCategories,
+    deleteItem
 }

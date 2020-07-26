@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { getCategories } from '../helpers/firebaseRequests.js';
 import ROUTES from '../constants/routes.js';
 
@@ -30,8 +30,13 @@ class Topmenu extends Component {
 			<section className={`${mainStyles.sec} ${styles.nav_sec}`}>
 				<div className={`${mainStyles.container}`}>
 					<nav className={styles.topmenu}>
-						<Link to={ROUTES.HOME}>Начало</Link>
-						{this.allCategories.map(el => <Link to={`${ROUTES.RECIPES}/${el}`} key={el}>{el}</Link>)}
+						<NavLink to={ROUTES.HOME}>
+							Начало
+						</NavLink>
+						{this.allCategories.map(el => 
+							<NavLink to={`${ROUTES.RECIPES}/${el}`} key={el}>
+								{el}
+							</NavLink>)}
 						<a href="">За нас</a>
 					</nav>
 				</div>

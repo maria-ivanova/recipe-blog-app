@@ -17,6 +17,7 @@ import Register from './register.js';
 import Profile from './profile.js';
 import Create from './create.js';
 import Edit from './edit.js';
+import Details from './details.js';
 import MyItems from './myItems.js';
 import ListPage from './listPage.js';
 import NotFound from './notFound.js';
@@ -52,6 +53,7 @@ class App extends Component {
             <Route path={ROUTES.PROFILE} component={Profile} />
             <Route path={ROUTES.CREATE} component={Create} />
             <Route path={`${ROUTES.EDIT}/:id`} component={Edit} />
+            <Route path={`${ROUTES.DETAILS}/:id`} component={Details} />
             <Route path={ROUTES.MY_RECIPES} component={MyItems} />
             <Route path={`${ROUTES.RECIPES}/:categoryName`} component={ListPage} />
             <Route path="" component={NotFound} />

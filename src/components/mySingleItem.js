@@ -10,14 +10,16 @@ import styles from '../styles/mySingleItem.module.css';
 const MySingleItem = (props) => {
     return (
         <div className={styles.item}>
-            <a href="" className={styles.item_img}>
+            <Link to={`${ROUTES.DETAILS}/${props.value.id}`}
+                className={styles.item_img}>
                 <img src={props.value.imageUrl} />
-            </a>
+            </Link>
 
             <div className={styles.item_details}>
-                <a href="" className={styles.title}>
+                <Link to={`${ROUTES.DETAILS}/${props.value.id}`}
+                    className={styles.title}>
                     {props.value.title}
-                </a>
+                </Link>
 
                 <div className={styles.date}>
                     {new Intl.DateTimeFormat('bg-BG',

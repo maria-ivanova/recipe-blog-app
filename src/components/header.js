@@ -37,6 +37,11 @@ class Header extends Component {
 										</li>
 
 										<li>
+											<Link to={ROUTES.FAVORITES_RECIPES}>Любими рецепти</Link>
+										</li>
+
+
+										<li>
 											<Link to={ROUTES.PROFILE}>Профил</Link>
 										</li>
 									</ul>

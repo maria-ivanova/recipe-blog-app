@@ -4,9 +4,10 @@ const REGISTER = '/register';
 const PROFILE = '/profile';
 const CREATE = '/create';
 const EDIT = '/edit';
+const DETAILS = '/details';
 const RECIPES = '/recipes';
 const MY_RECIPES = '/myRecipes';
-const DETAILS = '/details';
+const FAVORITES_RECIPES = '/myFavorites';
 
 export default {
     HOME,
@@ -17,5 +18,6 @@ export default {
     EDIT,
     DETAILS,
     RECIPES,
-    MY_RECIPES
+    MY_RECIPES,
+    FAVORITES_RECIPES
 }

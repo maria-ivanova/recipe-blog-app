@@ -155,6 +155,8 @@
   
   .item_layout .btn {
     float: right;
+    padding-bottom: 12px;
+    cursor: pointer;
   }
   
   .item_layout .btn .fa {
@@ -162,4 +164,9 @@
     margin-right: 10px;
     font-size: 22px;
     top: 2px;
+  }
+
+  .favorites_info {
+    display: inline-block;
+    float: right;
   }

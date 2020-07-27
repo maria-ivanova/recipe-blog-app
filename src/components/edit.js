@@ -30,7 +30,8 @@ class Edit extends Component {
             imageUrl: '',
             ingredients: '',
             recipeDescription: '',
-            likes: null,
+            likes: 0,
+            likesArr: [],
             errorMsg: null,
         }
 
@@ -144,6 +145,7 @@ class Edit extends Component {
             ingredients,
             recipeDescription,
             likes,
+            likesArr,
             errorMsg
         } = this.state;
 

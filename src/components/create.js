@@ -27,7 +27,8 @@ const INITIAL_STATE = {
     imageUrl: '',
     ingredients: '',
     recipeDescription: '',
-    likes: null,
+    likes: 0,
+    likesArr: [],
     errorMsg: null,
 }
 
@@ -53,6 +54,7 @@ class Create extends Component {
         this.getAllCategories();
 
         const userContext = this.context;
+        console.log(userContext)
 
         if (userContext) {
             this.setState({
@@ -126,6 +128,7 @@ class Create extends Component {
             ingredients,
             recipeDescription,
             likes,
+            likesArr,
             errorMsg
         } = this.state;
 

@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import { getItemInfo } from '../helpers/firebaseRequests.js';
+import { getItemInfo, postEdit } from '../helpers/firebaseRequests.js';
+import { AuthUserContext } from '../context/context.js';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -11,6 +12,8 @@ import mainStyles from '../styles/app.module.css';
 import styles from '../styles/details.module.css';
 
 class Details extends Component {
+	static contextType = AuthUserContext;
+
 	constructor(props) {
 		super(props)
 
@@ -26,7 +29,8 @@ class Details extends Component {
 			imageUrl: '',
 			ingredients: '',
 			recipeDescription: '',
-			likes: null,
+			likes: 0,
+			likesArr: [],
 		}
 	}
 
@@ -37,13 +41,47 @@ class Details extends Component {
 				this.setState({ ...data });
 			})
 			.catch(error => console.log(error));
+	};
+
+	likesHendler = async () => {
+		const itemId = this.props.match.params.id;
+		const userID = this.context.uid;
+
+		const likes = await this.state.likes + 1;
+		const likesArr = await this.state.likesArr;
+		await likesArr.push(userID);
+
+		await this.setState({
+			likes,
+			likesArr
+		});
+
+		const data = this.state;
+
+		postEdit(itemId, data)
+			.then(response => {
+				console.log('successful like');
+			})
+			.catch(error => {
+				console.log(error);
+			})
 	}
+
+	isHidden = (userID) => {
+		if (this.state.likesArr.includes(userID)) {
+			return true;
+		}
+
+		if (this.state.creatorId === userID) {
+			return true;
+		}
+	}
+
 
 	componentDidMount() {
 		const id = this.props.match.params.id;
-		this.getInfo(id)
+		this.getInfo(id);
 	}
-
 
 	render() {
 		const {
@@ -58,6 +96,7 @@ class Details extends Component {
 			ingredients,
 			recipeDescription,
 			likes,
+			likesArr,
 		} = this.state;
 
 		return (
@@ -140,10 +179,23 @@ class Details extends Component {
 									</span>
 								</div>
 
-								<a href="" className={`${mainStyles.btn} ${styles.btn}`}>
-									<FontAwesomeIcon icon="heart" className={styles.fa} />
-									Добави в любими
-								</a>
+								{this.context ?
+									this.isHidden(this.context.uid) ?
+										<span className={styles.favorites_info}>
+											<FontAwesomeIcon icon="heart" className={styles.fa} /> Добавена в любими
+										</span>
+
+										:
+
+										<button onClick={this.likesHendler} className={`${mainStyles.btn} ${styles.btn}`}>
+											<FontAwesomeIcon icon="heart" className={styles.fa} />
+										Добави в любими
+									</button>
+
+									:
+
+									null
+								}
 							</div>
 						</div>
 					</div>

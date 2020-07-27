@@ -20,7 +20,6 @@ const SingleItem = (props) => {
             <div className={styles.item_details}>
                 <Link to={`${ROUTES.DETAILS}/${props.value.id}`}
                     className={styles.title}>
-
                     {props.value.title}
                 </Link>
 

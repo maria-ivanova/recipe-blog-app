@@ -8,6 +8,7 @@ const DETAILS = '/details';
 const RECIPES = '/recipes';
 const MY_RECIPES = '/myRecipes';
 const FAVORITES_RECIPES = '/myFavorites';
+const SEARCH = '/search';
 
 export default {
     HOME,
@@ -19,5 +20,6 @@ export default {
     DETAILS,
     RECIPES,
     MY_RECIPES,
-    FAVORITES_RECIPES
+    FAVORITES_RECIPES,
+    SEARCH
 }

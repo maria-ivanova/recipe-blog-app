@@ -21,6 +21,7 @@ import Details from './details.js';
 import MyItems from './myItems.js';
 import Favorites from './favorites.js';
 import ListPage from './listPage.js';
+import SearchPage from './searchPage.js';
 import NotFound from './notFound.js';
 
 library.add(faChevronDown, faUser, faHeart, faUpload, faTimes);
@@ -58,6 +59,7 @@ class App extends Component {
             <Route path={ROUTES.MY_RECIPES} component={MyItems} />
             <Route path={ROUTES.FAVORITES_RECIPES} component={Favorites} />
             <Route path={`${ROUTES.RECIPES}/:categoryName`} component={ListPage} />
+            <Route path={ROUTES.SEARCH} component={SearchPage} />
             <Route path="" component={NotFound} />
           </Switch>
 

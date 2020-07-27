@@ -36,8 +36,21 @@ class ItemsList extends Component {
     }
 
     render() {
-        const { data } = this.state;
-        const { sortCriterion, filerCriterion, secondFilterCriterion, hiddenPageTitle } = this.props;
+        let { data } = this.state;
+        const { sortCriterion, filerCriterion, secondFilterCriterion, hiddenPageTitle, maxElements } = this.props;
+
+        if (filerCriterion && secondFilterCriterion !== 'Всички рецепти') {
+            data = data.filter(el => el[filerCriterion] === secondFilterCriterion);
+            console.log('dsdsd')
+        }
+
+        if (sortCriterion) {
+            data = data.sort((a, b) => b[sortCriterion] - a[sortCriterion])
+        }
+
+        if (maxElements) {
+            data = data.slice(0, maxElements + 1);
+        }
 
         return (
             <section className={`${mainStyles.sec} ${mainStyles.content_sec}`}>
@@ -45,22 +58,7 @@ class ItemsList extends Component {
                     {hiddenPageTitle ? null : <PageTitle />}
 
                     <div className={styles.items_list}>
-                        {filerCriterion ?
-                            secondFilterCriterion === 'Всички рецепти' ?
-
-                                data.map(el => <SingleItem key={el.id} value={el} />)
-
-                                :
-
-                                data.filter(el => el[filerCriterion] === secondFilterCriterion)
-                                    .map(el => <SingleItem key={el.id} value={el} />)
-
-                            :
-
-                            data.sort((a, b) => b[sortCriterion] - a[sortCriterion])
-                                .slice(0, 9)
-                                .map(el => <SingleItem key={el.id} value={el} />)
-                        }
+                        {data.map(el => <SingleItem key={el.id} value={el} />)}
                     </div>
                 </div>
             </section>

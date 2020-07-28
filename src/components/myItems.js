@@ -6,6 +6,8 @@ import ROUTES from '../constants/routes.js';
 
 import SingleItem from './mySingleItem.js';
 
+import Notifications, { notify } from './notifications.js';
+
 import WithAuthorization from './withAuthorization.js';
 import { AuthUserContext } from '../context/context.js';
 
@@ -45,16 +47,11 @@ class MyItems extends Component {
 
         await deleteItem(id)
             .then(response => {
-                this.setState({
-                    errorMsg: ''
-                })
-
+                notify('success', 'Рецептата беше успeшно изтрита!');
                 this.updateData();
             })
             .catch(error => {
-                this.setState({
-                    errorMsg: customErrors['failedDelete']
-                })
+                notify('error', 'Неуспешно изтриване на рецепта!');
             })
     }
 
@@ -67,6 +64,8 @@ class MyItems extends Component {
 
         return (
             <Fragment>
+                <Notifications />
+
                 <section className={mainStyles.sec}>
                     <div className={styles.banner_item}>
                         <h2 className={styles.title}>Моите рецепти</h2>

@@ -41,7 +41,6 @@ class ItemsList extends Component {
 
         if (filerCriterion && secondFilterCriterion !== 'Всички рецепти') {
             data = data.filter(el => el[filerCriterion] === secondFilterCriterion);
-            console.log('dsdsd')
         }
 
         if (sortCriterion) {

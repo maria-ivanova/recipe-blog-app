@@ -6,6 +6,8 @@ import { firebaseErrors, customErrors } from '../constants/errors.js';
 import ROUTES from '../constants/routes.js';
 import WithAuthorization from './withAuthorization.js';
 
+import Notifications, { notify } from './notifications.js';
+
 import { PageTitleContext } from '../context/context.js';
 import PageTitle from './pageTitle.js';
 
@@ -67,7 +69,7 @@ class Edit extends Component {
     imageHandler = async (event) => {
         if (event.target.files[0]) {
             const image = event.target.files[0];
-            await this.setState(() => ({ image }));
+            await this.setState({ image });
         }
     }
 
@@ -81,57 +83,77 @@ class Edit extends Component {
     submitHandler = async (event) => {
         event.preventDefault();
 
-        const data = this.state;
-        const id = this.props.match.params.id;
-        delete data['errorMsg'];
+        const { image, imageUrl } = this.state;
 
-        if (this.state.image) {
-            const { image } = this.state;
-            const uploadTask = storage.ref(`images/${image.name}`).put(image);
-
-            uploadTask.on('state_changed', (snapshot) => {
-                console.log(snapshot);
-
-            }, (error) => {
-                this.setState({
-                    errorMsg: customErrors['failedCreate']
-                })
-
-            }, () => {
-                storage
-                    .ref("images")
-                    .child(image.name)
-                    .getDownloadURL()
-                    .then(imageUrl => {
-                        this.setState({ imageUrl });
-
-                        const data = this.state;
-                        const id = this.props.match.params.id;
-                        delete data['errorMsg'];
-
-                        postEdit(id, data)
-                            .then(response => {
-                                console.log('successful editing');
-                            })
-                            .catch(error => {
-                                this.setState({
-                                    errorMsg: customErrors['failedEdit']
-                                })
-                            })
-                    });
+        if (!image && !imageUrl) {
+            this.setState({
+                errorMsg: customErrors['missingImage']
             })
 
-        } else {
+            return;
+        }
+
+        if (imageUrl) {
+            const data = this.state;
+            const id = this.props.match.params.id;
+            delete data['errorMsg'];
+            
             postEdit(id, data)
                 .then(response => {
-                    this.props.history.push(`${ROUTES.EDIT}/${id}`);
+                    this.setState({
+                        errorMsg: ''
+                    })
+
+                    notify('success', 'Успешно редактиране на рецепта!');
                 })
                 .catch(error => {
                     this.setState({
                         errorMsg: customErrors['failedEdit']
                     })
                 })
+
+            return;
         }
+
+        const uploadTask = storage.ref(`images/${image.name}`).put(image);
+
+        uploadTask.on('state_changed', (snapshot) => {
+            console.log(snapshot);
+
+        }, (error) => {
+            this.setState({
+                errorMsg: customErrors['failedEdit']
+            })
+
+        }, () => {
+            storage
+                .ref("images")
+                .child(image.name)
+                .getDownloadURL()
+                .then(imageUrl => {
+                    this.setState({ imageUrl });
+
+                    const data = this.state;
+                    const id = this.props.match.params.id;
+                    delete data['errorMsg'];
+
+                    postEdit(id, data)
+                        .then(response => {
+                            this.setState({
+                                errorMsg: ''
+                            })
+
+                            notify('success', 'Успешно редактиране на рецепта!');
+                        })
+                        .catch(error => {
+                            this.setState({
+                                errorMsg: customErrors['failedEdit']
+                            })
+                        })
+                });
+        })
+
+
     }
 
     render() {
@@ -152,6 +174,8 @@ class Edit extends Component {
         return (
             <section className={`${mainStyles.sec} ${mainStyles.content_sec}`}>
                 <div className={`${mainStyles.container} ${mainStyles.tcenter}`}>
+                    <Notifications />
+
                     <PageTitleContext.Provider value="Редактиране на рецепта">
                         <PageTitle />
                     </PageTitleContext.Provider>

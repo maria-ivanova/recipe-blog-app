@@ -7,6 +7,8 @@ import ROUTES from '../constants/routes.js';
 import WithAuthorization from './withAuthorization.js';
 import { AuthUserContext } from '../context/context.js';
 
+import Notifications, { notify } from './notifications.js';
+
 import { PageTitleContext } from '../context/context.js';
 import PageTitle from './pageTitle.js';
 
@@ -54,7 +56,6 @@ class Create extends Component {
         this.getAllCategories();
 
         const userContext = this.context;
-        console.log(userContext)
 
         if (userContext) {
             this.setState({
@@ -73,7 +74,7 @@ class Create extends Component {
     imageHandler = async (event) => {
         if (event.target.files[0]) {
             const image = event.target.files[0];
-            await this.setState(() => ({ image }));
+            await this.setState({ image });
         }
     }
 
@@ -81,6 +82,15 @@ class Create extends Component {
         event.preventDefault();
 
         const { image } = this.state;
+
+        if (!image) {
+            this.setState({
+                errorMsg: customErrors['missingImage']
+            })
+
+            return;
+        }
+
         const uploadTask = storage.ref(`images/${image.name}`).put(image);
 
         uploadTask.on('state_changed', (snapshot) => {
@@ -90,7 +100,6 @@ class Create extends Component {
             this.setState({
                 errorMsg: customErrors['failedCreate']
             })
-
         }, () => {
             storage
                 .ref("images")
@@ -106,13 +115,14 @@ class Create extends Component {
                         .then(response => {
                             this.setState({ ...INITIAL_STATE });
                             this.props.history.push(ROUTES.CREATE);
+                            notify('success', 'Успешно създадена рецепта!');
                         })
                         .catch(error => {
                             this.setState({
                                 errorMsg: customErrors['failedCreate']
                             })
                         })
-                });
+                })
         })
     }
 
@@ -135,9 +145,13 @@ class Create extends Component {
         return (
             <section className={`${mainStyles.sec} ${mainStyles.content_sec}`}>
                 <div className={`${mainStyles.container} ${mainStyles.tcenter}`}>
+
+                    <Notifications />
+
                     <PageTitleContext.Provider value="Създай рецепта">
                         <PageTitle />
                     </PageTitleContext.Provider>
+                    
 
                     <form onSubmit={this.submitHandler} className={styles.recipe_form}>
                         {errorMsg ? <div className={mainStyles.errorMsg}>{errorMsg}</div> : null}

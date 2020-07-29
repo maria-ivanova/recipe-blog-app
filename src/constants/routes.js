@@ -9,7 +9,7 @@ const RECIPES = '/recipes';
 const MY_RECIPES = '/myRecipes';
 const FAVORITES_RECIPES = '/myFavorites';
 const SEARCH = '/search';
-
+const NOT_FOUND = '/notFound';
 export default {
     HOME,
     LOGIN,
@@ -21,5 +21,6 @@ export default {
     RECIPES,
     MY_RECIPES,
     FAVORITES_RECIPES,
-    SEARCH
+    SEARCH,
+    NOT_FOUND
 }

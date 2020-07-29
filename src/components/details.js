@@ -1,6 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { getItemInfo, postEdit } from '../helpers/firebaseRequests.js';
 import { AuthUserContext } from '../context/context.js';
+import Notifications, { notify } from './notifications.js';
+
+import ROUTES from '../constants/routes.js';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -38,9 +41,15 @@ class Details extends Component {
 		await getItemInfo(id)
 			.then(response => response.json())
 			.then(data => {
+
+				if(!data) {
+					this.props.history.push(ROUTES.NOT_FOUND);
+					return;
+				}
+
 				this.setState({ ...data });
 			})
-			.catch(error => console.log(error));
+			.catch(error => this.props.history.push(ROUTES.NOT_FOUND));
 	};
 
 	likesHendler = async () => {
@@ -60,7 +69,7 @@ class Details extends Component {
 
 		postEdit(itemId, data)
 			.then(response => {
-				console.log('successful like');
+				notify('success', 'Успешно добавихте рецептата в любими!');
 			})
 			.catch(error => {
 				console.log(error);
@@ -101,6 +110,8 @@ class Details extends Component {
 
 		return (
 			<Fragment>
+				<Notifications />
+
 				<section className={mainStyles.sec}>
 					<div className={styles.banner_item}>
 						<h2 className={styles.title}>{category}</h2>

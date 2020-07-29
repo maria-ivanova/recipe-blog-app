@@ -48,9 +48,15 @@ class Edit extends Component {
         await getItemInfo(id)
             .then(response => response.json())
             .then(data => {
+
+                if (!data) {
+                    this.props.history.push(ROUTES.NOT_FOUND);
+                    return;
+                }
+
                 this.setState({ ...data });
             })
-            .catch(error => console.log(error));
+            .catch(error => this.props.history.push(ROUTES.NOT_FOUND));
     }
 
     componentDidMount() {
@@ -80,6 +86,34 @@ class Edit extends Component {
         })
     }
 
+    editRecipe = () => {
+        const data = this.state;
+        const id = this.props.match.params.id;
+        delete data['errorMsg'];
+
+        if(this.state.totalTime.length > 10) {
+            this.setState({
+                errorMsg: customErrors['maxLengthTotalTime']
+            })
+
+            return;
+        }
+
+        postEdit(id, data)
+            .then(response => {
+                this.setState({
+                    errorMsg: ''
+                })
+
+                notify('success', 'Успешно редактиране на рецепта!');
+            })
+            .catch(error => {
+                this.setState({
+                    errorMsg: customErrors['failedEdit']
+                })
+            })
+    }
+
     submitHandler = async (event) => {
         event.preventDefault();
 
@@ -94,24 +128,7 @@ class Edit extends Component {
         }
 
         if (imageUrl) {
-            const data = this.state;
-            const id = this.props.match.params.id;
-            delete data['errorMsg'];
-            
-            postEdit(id, data)
-                .then(response => {
-                    this.setState({
-                        errorMsg: ''
-                    })
-
-                    notify('success', 'Успешно редактиране на рецепта!');
-                })
-                .catch(error => {
-                    this.setState({
-                        errorMsg: customErrors['failedEdit']
-                    })
-                })
-
+            this.editRecipe();
             return;
         }
 
@@ -132,24 +149,7 @@ class Edit extends Component {
                 .getDownloadURL()
                 .then(imageUrl => {
                     this.setState({ imageUrl });
-
-                    const data = this.state;
-                    const id = this.props.match.params.id;
-                    delete data['errorMsg'];
-
-                    postEdit(id, data)
-                        .then(response => {
-                            this.setState({
-                                errorMsg: ''
-                            })
-
-                            notify('success', 'Успешно редактиране на рецепта!');
-                        })
-                        .catch(error => {
-                            this.setState({
-                                errorMsg: customErrors['failedEdit']
-                            })
-                        })
+                    this.editRecipe();
                 });
         })
 
@@ -212,13 +212,14 @@ class Edit extends Component {
 
                         <div className={mainStyles.input_row}>
                             <label className={mainStyles.lbl}>
-                                Време за приготвяне <span className={mainStyles.tred}>*</span>
+                                Време за приготвяне (макс. 10 символа) <span className={mainStyles.tred}>*</span>
                             </label>
 
                             <input type="text"
                                 name="totalTime"
                                 value={totalTime}
                                 onChange={this.changeHandler}
+                                placeholder="20 мин. / 1 час / 2 часа"
                                 className={`${mainStyles.input_text} ${styles.input_text}`}
                                 required />
                         </div>
@@ -230,6 +231,7 @@ class Edit extends Component {
 
                             <input type="number"
                                 name="yields"
+                                min={1}
                                 value={yields}
                                 onChange={this.changeHandler}
                                 className={`${mainStyles.input_text} ${styles.input_text}`}

@@ -111,6 +111,14 @@ class Create extends Component {
                     const data = this.state;
                     delete data['errorMsg'];
 
+                    if(this.state.totalTime.length > 10) {
+                        this.setState({
+                            errorMsg: customErrors['maxLengthTotalTime']
+                        })
+            
+                        return;
+                    }
+
                     postCreate(data)
                         .then(response => {
                             this.setState({ ...INITIAL_STATE });
@@ -185,13 +193,14 @@ class Create extends Component {
 
                         <div className={mainStyles.input_row}>
                             <label className={mainStyles.lbl}>
-                                Време за приготвяне <span className={mainStyles.tred}>*</span>
+                                Време за приготвяне (макс. 10 символа) <span className={mainStyles.tred}>*</span>
                             </label>
 
                             <input type="text"
                                 name="totalTime"
                                 value={totalTime}
                                 onChange={this.changeHandler}
+                                placeholder="20 мин. / 1 час / 2 часа"
                                 className={`${mainStyles.input_text} ${styles.input_text}`}
                                 required />
                         </div>
@@ -203,6 +212,7 @@ class Create extends Component {
 
                             <input type="number"
                                 name="yields"
+                                min={1}
                                 value={yields}
                                 onChange={this.changeHandler}
                                 className={`${mainStyles.input_text} ${styles.input_text}`}

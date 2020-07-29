@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { getCategories, getItemInfo, postEdit } from '../helpers/firebaseRequests.js';
 import { storage } from "../services/firebase.js";
 import { firebaseErrors, customErrors } from '../constants/errors.js';
@@ -35,13 +36,17 @@ class Edit extends Component {
             likes: 0,
             likesArr: [],
             errorMsg: null,
+            allCategories: []
         }
-
-        this.allCategories = [];
+        
     }
 
     getAllCategories = async () => {
-        this.allCategories = Object.values(await getCategories())[0];
+        const allCategories = Object.values(await getCategories())[0];
+
+        this.setState({
+            allCategories
+        })
     }
 
     getInfo = async (id) => {
@@ -61,9 +66,8 @@ class Edit extends Component {
 
     componentDidMount() {
         const id = this.props.match.params.id;
-
+        this.getInfo(id);
         this.getAllCategories();
-        this.getInfo(id)
     }
 
     changeHandler = (event) => {
@@ -90,8 +94,9 @@ class Edit extends Component {
         const data = this.state;
         const id = this.props.match.params.id;
         delete data['errorMsg'];
+        delete data['allCategories'];
 
-        if(this.state.totalTime.length > 10) {
+        if (this.state.totalTime.length > 10) {
             this.setState({
                 errorMsg: customErrors['maxLengthTotalTime']
             })
@@ -168,8 +173,11 @@ class Edit extends Component {
             recipeDescription,
             likes,
             likesArr,
-            errorMsg
+            errorMsg,
+            allCategories
         } = this.state;
+
+        const id = this.props.match.params.id;
 
         return (
             <section className={`${mainStyles.sec} ${mainStyles.content_sec}`}>
@@ -179,6 +187,10 @@ class Edit extends Component {
                     <PageTitleContext.Provider value="Редактиране на рецепта">
                         <PageTitle />
                     </PageTitleContext.Provider>
+
+                    <h3 className={styles.inner_title}>
+                        Kъм рецептата <Link to={`${ROUTES.DETAILS}/${id}`}>{title}</Link>
+                    </h3>
 
                     <form onSubmit={this.submitHandler} className={styles.recipe_form}>
                         {errorMsg ? <div className={mainStyles.errorMsg}>{errorMsg}</div> : null}
@@ -206,7 +218,7 @@ class Edit extends Component {
                                 onChange={this.changeHandler}
                                 className={`${mainStyles.input_text} ${styles.input_text}`}>
 
-                                {this.allCategories.map(el => <option key={el}>{el}</option>)}
+                                {allCategories.map(el => <option key={el}>{el}</option>)}
                             </select>
                         </div>
 

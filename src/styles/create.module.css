@@ -70,3 +70,13 @@
   .btnDeleteImg:hover {
     background-color: #66a55f;
   }
+
+  .inner_title {
+    display: inline-block;
+    float: left;
+    width: 100%;
+    margin: 0 0 40px 0;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+  }

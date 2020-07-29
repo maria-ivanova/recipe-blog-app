@@ -32,6 +32,7 @@ const INITIAL_STATE = {
     likes: 0,
     likesArr: [],
     errorMsg: null,
+    allCategories: []
 }
 
 class Create extends Component {
@@ -41,14 +42,14 @@ class Create extends Component {
         super(props)
 
         this.state = { ...INITIAL_STATE };
-        this.allCategories = [];
     }
 
     getAllCategories = async () => {
-        this.allCategories = Object.values(await getCategories())[0];
+        const allCategories = Object.values(await getCategories())[0];
 
         await this.setState({
-            category: this.allCategories[0]
+            allCategories,
+            category: allCategories[0]
         })
     }
 
@@ -110,6 +111,7 @@ class Create extends Component {
 
                     const data = this.state;
                     delete data['errorMsg'];
+                    delete data['allCategories'];
 
                     if(this.state.totalTime.length > 10) {
                         this.setState({
@@ -147,7 +149,8 @@ class Create extends Component {
             recipeDescription,
             likes,
             likesArr,
-            errorMsg
+            errorMsg,
+            allCategories
         } = this.state;
 
         return (
@@ -187,7 +190,7 @@ class Create extends Component {
                                 onChange={this.changeHandler}
                                 className={`${mainStyles.input_text} ${styles.input_text}`}>
 
-                                {this.allCategories.map(el => <option key={el}>{el}</option>)}
+                                {allCategories.map(el => <option key={el}>{el}</option>)}
                             </select>
                         </div>
 

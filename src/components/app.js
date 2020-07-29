@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faChevronDown, faUser, faHeart, faUpload, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faUser, faHeart, faUpload, faTimes, faEdit } from '@fortawesome/free-solid-svg-icons';
 
 import { AuthUserContext } from '../context/context.js';
 import { auth } from "../services/firebase.js";
@@ -24,7 +24,7 @@ import ListPage from './listPage.js';
 import SearchPage from './searchPage.js';
 import NotFound from './notFound.js';
 
-library.add(faChevronDown, faUser, faHeart, faUpload, faTimes);
+library.add(faChevronDown, faUser, faHeart, faUpload, faTimes, faEdit);
 
 class App extends Component {
   constructor(props) {

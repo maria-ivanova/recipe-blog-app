@@ -46,6 +46,23 @@
     background-color: rgba(0, 0, 0, 0.4);
     z-index: 1;
   }
+
+  .items_list {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+  }
+  
   .inner_text {
       display: inline-block;
       float: left;

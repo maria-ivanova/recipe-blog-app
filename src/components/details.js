@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import { getItemInfo, postEdit } from '../helpers/firebaseRequests.js';
 import { AuthUserContext } from '../context/context.js';
 import Notifications, { notify } from './notifications.js';
@@ -42,7 +43,7 @@ class Details extends Component {
 			.then(response => response.json())
 			.then(data => {
 
-				if(!data) {
+				if (!data) {
 					this.props.history.push(ROUTES.NOT_FOUND);
 					return;
 				}
@@ -76,11 +77,13 @@ class Details extends Component {
 			})
 	}
 
-	isHidden = (userID) => {
+	isLiked = (userID) => {
 		if (this.state.likesArr.includes(userID)) {
 			return true;
 		}
+	}
 
+	isCreator = (userID) => {
 		if (this.state.creatorId === userID) {
 			return true;
 		}
@@ -107,6 +110,8 @@ class Details extends Component {
 			likes,
 			likesArr,
 		} = this.state;
+
+		const id = this.props.match.params.id;
 
 		return (
 			<Fragment>
@@ -191,17 +196,25 @@ class Details extends Component {
 								</div>
 
 								{this.context ?
-									this.isHidden(this.context.uid) ?
-										<span className={styles.favorites_info}>
-											<FontAwesomeIcon icon="heart" className={styles.fa} /> Добавена в любими
-										</span>
+									this.isCreator(this.context.uid) ?
+										<Link to={`${ROUTES.EDIT}/${id}`}
+											className={`${mainStyles.btn} ${styles.btn}`}>
+											<FontAwesomeIcon icon="edit" className={styles.fa} /> Редактирай
+										</Link>
 
 										:
 
-										<button onClick={this.likesHendler} className={`${mainStyles.btn} ${styles.btn}`}>
-											<FontAwesomeIcon icon="heart" className={styles.fa} />
-										Добави в любими
-									</button>
+										this.isLiked(this.context.uid) ?
+											<span className={styles.favorites_info}>
+												<FontAwesomeIcon icon="heart" className={styles.fa} /> Добавена в любими
+											</span>
+
+											:
+
+											<button onClick={this.likesHendler} className={`${mainStyles.btn} ${styles.btn}`}>
+													<FontAwesomeIcon icon="heart" className={styles.fa} />
+												Добави в любими
+											</button>
 
 									:
 

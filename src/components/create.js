@@ -79,12 +79,55 @@ class Create extends Component {
         }
     }
 
+    createRecipe = (data) => {
+        delete data['errorMsg'];
+        delete data['allCategories'];
+
+        postCreate(data)
+            .then(response => {
+                this.setState({ ...INITIAL_STATE });
+                this.props.history.push(ROUTES.CREATE);
+                notify('success', 'Успешно създадена рецепта!');
+            })
+            .catch(error => {
+                this.setState({
+                    errorMsg: customErrors['failedCreate']
+                })
+            })
+    }
+
     submitHandler = async (event) => {
         event.preventDefault();
+        const data = { ...this.state };
 
-        const { image } = this.state;
+        if (data.title.trim() === '' || data.category.trim() === '' ||
+            data.totalTime.trim() === '' || data.yields.trim() === '' ||
+            data.ingredients.trim() === '' || data.recipeDescription.trim() === '') {
 
-        if (!image) {
+            this.setState({
+                errorMsg: customErrors['requiredFields']
+            })
+
+            return;
+        }
+
+        if (!Number.isInteger(Number(data.yields)) || Number(data.yields) <= 0 || data.yields.includes('.')) {
+            this.setState({
+                errorMsg: customErrors['mustBeInteger']
+            })
+
+            return;
+        }
+
+        if (data.totalTime.length > 10) {
+            this.setState({
+                errorMsg: customErrors['maxLengthTotalTime']
+            })
+
+            return;
+        }
+
+        if (!data.image) {
             this.setState({
                 errorMsg: customErrors['missingImage']
             })
@@ -92,7 +135,7 @@ class Create extends Component {
             return;
         }
 
-        const uploadTask = storage.ref(`images/${image.name}`).put(image);
+        const uploadTask = storage.ref(`images/${data.image.name}`).put(data.image);
 
         uploadTask.on('state_changed', (snapshot) => {
             console.log(snapshot);
@@ -104,34 +147,11 @@ class Create extends Component {
         }, () => {
             storage
                 .ref("images")
-                .child(image.name)
+                .child(data.image.name)
                 .getDownloadURL()
                 .then(imageUrl => {
                     this.setState({ imageUrl });
-
-                    const data = this.state;
-                    delete data['errorMsg'];
-                    delete data['allCategories'];
-
-                    if(this.state.totalTime.length > 10) {
-                        this.setState({
-                            errorMsg: customErrors['maxLengthTotalTime']
-                        })
-            
-                        return;
-                    }
-
-                    postCreate(data)
-                        .then(response => {
-                            this.setState({ ...INITIAL_STATE });
-                            this.props.history.push(ROUTES.CREATE);
-                            notify('success', 'Успешно създадена рецепта!');
-                        })
-                        .catch(error => {
-                            this.setState({
-                                errorMsg: customErrors['failedCreate']
-                            })
-                        })
+                    this.createRecipe(this.state);
                 })
         })
     }
@@ -162,7 +182,7 @@ class Create extends Component {
                     <PageTitleContext.Provider value="Създай рецепта">
                         <PageTitle />
                     </PageTitleContext.Provider>
-                    
+
 
                     <form onSubmit={this.submitHandler} className={styles.recipe_form}>
                         {errorMsg ? <div className={mainStyles.errorMsg}>{errorMsg}</div> : null}
@@ -213,9 +233,8 @@ class Create extends Component {
                                 Порции <span className={mainStyles.tred}>*</span>
                             </label>
 
-                            <input type="number"
+                            <input type="text"
                                 name="yields"
-                                min={1}
                                 value={yields}
                                 onChange={this.changeHandler}
                                 className={`${mainStyles.input_text} ${styles.input_text}`}
@@ -228,14 +247,7 @@ class Create extends Component {
                             </label>
 
                             <span className={styles.img_holder}>
-                                {imageUrl ?
-                                    <img src={imageUrl} alt="recipe image" />
-                                    :
-                                    <span>
-                                        {image ? image.name : 'Все още няма качена снимка'}
-                                    </span>
-                                }
-
+                                {image ? image.name : 'Все още няма качена снимка'}
                             </span>
 
                             <label className={`${mainStyles.btn} ${styles.upload_btn}`}>

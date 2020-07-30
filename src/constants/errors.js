@@ -8,9 +8,14 @@ export const firebaseErrors = {
 export const customErrors = {
     'badPassword': 'Паролата трябва да съвпада с повторената парола!',
     'wrongUserPassword': 'Грешно потребителско име или парола!',
+    'invalidEmail': 'Невалиден имейл!',
+    'failedRegister': 'Неуспешно регистриране на потребител!',
+    'failedChangePassword': 'Несупешна промяна на парола',
     'failedCreate': 'Неуспешно създаване на рецепта!',
+    'requiredFields': 'Попълнете всички полета!',
     'missingImage': 'Моля, качете снимка!',
     'failedEdit': 'Неуспешно редактиране на рецепта!',
     'maxLengthTotalTime': 'Максимална дължина на "Време за приготвяне" 10 символа!',
+    'mustBeInteger': 'Порциите трябва да са цяло число по-голямо от нула!',
 
 }

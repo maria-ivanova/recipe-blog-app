@@ -36,7 +36,8 @@ class MyItems extends Component {
                     ...data[key]
                 }
             })
-            .filter(el => el['creatorId'] === this.context.uid);
+            .filter(el => el['creatorId'] === this.context.uid)
+            .sort((a, b) => b['createdDate'] - a['createdDate']);
         }
 
         await this.setState({ data: dataArr });

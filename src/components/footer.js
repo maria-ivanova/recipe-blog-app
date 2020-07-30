@@ -25,13 +25,8 @@ const Footer = () => {
 
             <section className={`${mainStyles.sec} ${styles.copyrights}`}>
                 <div className={`${mainStyles.container} ${styles.container}`}>
-                    <div className={`${mainStyles.ib} ${mainStyles.fleft}`}>
+                    <div className={`${mainStyles.ib}`}>
                         2020 Spatulas Всички права запазени
-                    </div>
-
-                    <div className={`${mainStyles.ib} ${mainStyles.fright}`}>
-                        <a href="">Политика за поверителност</a>
-                        <a href="">Политика за бисквитките</a>
                     </div>
                 </div>
             </section>

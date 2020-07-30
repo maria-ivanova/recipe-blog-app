@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { registerUser, createUser } from '../helpers/userAuth.js';
+import { registerUser } from '../helpers/userAuth.js';
 import { firebaseErrors, customErrors } from '../constants/errors.js';
 import ROUTES from '../constants/routes.js';
 
@@ -34,6 +34,20 @@ class Register extends Component {
         event.preventDefault();
         const { email, username, password, rePassword } = this.state;
 
+        if(email === '' || username === '' || password === '' || rePassword === '') {
+            this.setState({
+                errorMsg: customErrors['requiredFields']
+            })
+            return;
+        }
+
+        if (!email.includes('@')) {
+            this.setState({
+                errorMsg: customErrors['invalidEmail']
+            })
+            return;
+        }
+
         if (password !== rePassword) {
             this.setState({
                 errorMsg: customErrors['badPassword']
@@ -51,8 +65,6 @@ class Register extends Component {
                         displayName: username
                     })
                 }
-
-                createUser(uid, data);
             })
             .then(() => {
                 this.setState({ ...INITIAL_STATE });
@@ -60,7 +72,7 @@ class Register extends Component {
             })
             .catch(error => {
                 this.setState({
-                    errorMsg: firebaseErrors[error.code] || error.message
+                    errorMsg: firebaseErrors[error.code] || customErrors['failedRegister']
                 })
             })
     }

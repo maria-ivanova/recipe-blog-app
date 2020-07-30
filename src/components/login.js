@@ -33,6 +33,21 @@ class Login extends Component {
         event.preventDefault();
         const { email, password} = this.state;
 
+        if (email === '' || password === '') {
+            this.setState({
+                errorMsg: customErrors['requiredFields']
+            })
+            return;
+        }
+
+        if (!email.includes('@')) {
+            this.setState({
+                errorMsg: customErrors['invalidEmail']
+            })
+            return;
+        }
+
+       
         loginUser(email, password)
         .then(response => {
             this.setState({...INITIAL_STATE});

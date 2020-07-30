@@ -65,9 +65,9 @@ class Edit extends Component {
     }
 
     componentDidMount() {
-        const id = this.props.match.params.id;
-        this.getInfo(id);
+        const itemId = this.props.match.params.id;
         this.getAllCategories();
+        this.getInfo(itemId);
     }
 
     changeHandler = (event) => {
@@ -90,21 +90,11 @@ class Edit extends Component {
         })
     }
 
-    editRecipe = () => {
-        const data = this.state;
-        const id = this.props.match.params.id;
+    editRecipe = (itemId, data) => {
         delete data['errorMsg'];
         delete data['allCategories'];
 
-        if (this.state.totalTime.length > 10) {
-            this.setState({
-                errorMsg: customErrors['maxLengthTotalTime']
-            })
-
-            return;
-        }
-
-        postEdit(id, data)
+        postEdit(itemId, data)
             .then(response => {
                 this.setState({
                     errorMsg: ''
@@ -121,10 +111,37 @@ class Edit extends Component {
 
     submitHandler = async (event) => {
         event.preventDefault();
+        const data = {...this.state};
+        const itemId = this.props.match.params.id;
 
-        const { image, imageUrl } = this.state;
+        if (data.title.trim() === '' || data.category.trim() === '' || 
+            data.totalTime.trim() === '' || data.yields.trim() === '' || 
+            data.ingredients.trim() === '' || data.recipeDescription.trim() === '') {
 
-        if (!image && !imageUrl) {
+            this.setState({
+                errorMsg: customErrors['requiredFields']
+            })
+
+            return;
+        }
+
+        if (!Number.isInteger(Number(data.yields)) || Number(data.yields) <= 0 || data.yields.includes('.')) {
+            this.setState({
+                errorMsg: customErrors['mustBeInteger']
+            })
+
+            return;
+        }
+
+        if (data.totalTime.length > 10) {
+            this.setState({
+                errorMsg: customErrors['maxLengthTotalTime']
+            })
+
+            return;
+        }
+
+        if (!data.image && !data.imageUrl) {
             this.setState({
                 errorMsg: customErrors['missingImage']
             })
@@ -132,12 +149,12 @@ class Edit extends Component {
             return;
         }
 
-        if (imageUrl) {
-            this.editRecipe();
+        if (data.imageUrl) {
+            this.editRecipe(itemId, data);
             return;
         }
 
-        const uploadTask = storage.ref(`images/${image.name}`).put(image);
+        const uploadTask = storage.ref(`images/${data.image.name}`).put(data.image);
 
         uploadTask.on('state_changed', (snapshot) => {
             console.log(snapshot);
@@ -150,15 +167,14 @@ class Edit extends Component {
         }, () => {
             storage
                 .ref("images")
-                .child(image.name)
+                .child(data.image.name)
                 .getDownloadURL()
                 .then(imageUrl => {
                     this.setState({ imageUrl });
-                    this.editRecipe();
+                    const data = {...this.state};
+                    this.editRecipe(itemId, data);
                 });
         })
-
-
     }
 
     render() {
@@ -241,9 +257,8 @@ class Edit extends Component {
                                 Порции <span className={mainStyles.tred}>*</span>
                             </label>
 
-                            <input type="number"
+                            <input type="text"
                                 name="yields"
-                                min={1}
                                 value={yields}
                                 onChange={this.changeHandler}
                                 className={`${mainStyles.input_text} ${styles.input_text}`}

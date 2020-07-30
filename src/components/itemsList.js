@@ -48,7 +48,7 @@ class ItemsList extends Component {
         }
 
         if (maxElements) {
-            data = data.slice(0, maxElements + 1);
+            data = data.slice(0, maxElements);
         }
 
         return (

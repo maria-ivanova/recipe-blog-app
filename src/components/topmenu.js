@@ -37,7 +37,6 @@ class Topmenu extends Component {
 							<NavLink to={`${ROUTES.RECIPES}/${el}`} key={el}>
 								{el}
 							</NavLink>)}
-						<a href="">За нас</a>
 					</nav>
 				</div>
 			</section>

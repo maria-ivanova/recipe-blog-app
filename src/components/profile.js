@@ -3,6 +3,7 @@ import { passwordUpdate } from '../helpers/userAuth.js';
 import { firebaseErrors, customErrors } from '../constants/errors.js';
 import { AuthUserContext } from '../context/context.js';
 import WithAuthorization from './withAuthorization.js';
+import Notifications, { notify } from './notifications.js';
 import ROUTES from '../constants/routes.js';
 
 import PageTitle from './pageTitle.js';
@@ -35,9 +36,6 @@ class Profile extends Component {
             this.setState({
                 username: userContext.displayName,
                 email: userContext.email,
-                password: '',
-                rePassword: '',
-                errorMsg: null
             })
         }
     }
@@ -62,15 +60,18 @@ class Profile extends Component {
         passwordUpdate(password)
             .then(response => {
                 this.setState({
+                    username: this.context.displayName,
+                    email: this.context.email,
                     password: '',
                     rePassword: '',
                     errorMsg: null
                 });
                 this.props.history.push(ROUTES.PROFILE);
+                notify('success', 'Успешна промяна на парола!');
             })
             .catch(error => {
                 this.setState({
-                    errorMsg: firebaseErrors[error.code] || error.message
+                    errorMsg: firebaseErrors[error.code] || customErrors['failedChangePassword']
                 })
             })
     }
@@ -81,6 +82,7 @@ class Profile extends Component {
         return (
             <section className={`${mainStyles.sec} ${mainStyles.content_sec}`}>
                 <div className={`${mainStyles.container} ${mainStyles.tcenter}`}>
+                    <Notifications />
 
                     <PageTitleContext.Provider value="Профил">
                         <PageTitle />

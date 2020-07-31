@@ -37,3 +37,12 @@
     width: 100%;
     font-weight: 700;
   }
+
+  @media (max-width: 700px) {
+    .bg_sec {
+      padding-top: 60px;
+    }
+    .cells_box .cell {
+      width: 50%;
+    }
+  }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { getCategories } from '../helpers/firebaseRequests.js';
 import ROUTES from '../constants/routes.js';
 
@@ -10,14 +10,16 @@ class Topmenu extends Component {
 	constructor(props) {
 		super(props);
 
-		this.allCategories = [];
+		this.state = {
+			links: []
+		}
 	}
 
 	getAllCategories = async () => {
-		this.allCategories = Object.values(await getCategories())[0];
+		const allCategories = Object.values(await getCategories())[0];
 
-		await this.setState({
-			category: this.allCategories[0]
+		this.setState({
+			links: allCategories
 		})
 	}
 
@@ -30,13 +32,13 @@ class Topmenu extends Component {
 			<section className={`${mainStyles.sec} ${styles.nav_sec}`}>
 				<div className={`${mainStyles.container}`}>
 					<nav className={styles.topmenu}>
-						<NavLink to={ROUTES.HOME}>
+						<Link to={ROUTES.HOME} key='home'>
 							Начало
-						</NavLink>
-						{this.allCategories.map(el => 
-							<NavLink to={`${ROUTES.RECIPES}/${el}`} key={el}>
+						</Link>
+						{this.state.links.map(el => 
+							<Link to={`${ROUTES.RECIPES}/${el}`} key={el}>
 								{el}
-							</NavLink>)}
+							</Link>)}
 					</nav>
 				</div>
 			</section>

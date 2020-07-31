@@ -186,7 +186,7 @@ class Details extends Component {
 							</div>
 
 							<div className={styles.item_meta}>
-								<div className={mainStyles.fleft}>
+								<div className={styles.meta_info}>
 									Публикувано от <span>{creatorName}</span> на &nbsp;
 									<span>
 										{new Intl.DateTimeFormat('bg-BG',

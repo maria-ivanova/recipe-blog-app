@@ -143,3 +143,17 @@ form {
   background-color: #333;
 }
 
+@media (max-width: 1275px) {
+  .container {
+    width: 100%;
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+}
+
+@media (max-width: 700px) {
+  .content_sec {
+    margin-top: 40px;
+  }
+}
+

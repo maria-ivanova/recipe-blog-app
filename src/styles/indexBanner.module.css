@@ -40,3 +40,10 @@
     font-size: 20px;
     line-height: 30px;
   }
+
+  @media (max-width: 700px) {
+    .banner_item .title {
+      font-size: 52px;
+      line-height: 82px;
+    }
+  }

@@ -8,3 +8,15 @@
   .user_form .input_text {
     width: 100%;
   }
+
+  @media (max-width: 1275px) {
+    .user_form {
+      width: 70%;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .user_form {
+      width: 100%;
+    }
+  }

@@ -88,3 +88,29 @@
   .item_meta .cell span {
     color: #66a55f;
   }
+
+  @media (max-width: 1275px) {
+    .item_details {
+      padding: 10px 20px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .item {
+      width: 31%;
+    }
+
+    .item:nth-child(4n+4) {
+      margin-right: 2%;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .item {
+      width: 49%;
+    }
+
+    .item:nth-child(2n+2) {
+      margin-right: 0;
+    }
+  }

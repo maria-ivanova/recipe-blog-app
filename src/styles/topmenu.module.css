@@ -20,3 +20,9 @@
   .topmenu a.current {
     color: #333;
   }
+
+  @media (max-width: 1024px) {
+    .nav_sec {
+      display: none;
+    }
+  }

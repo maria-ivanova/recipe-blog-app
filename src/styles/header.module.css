@@ -118,3 +118,14 @@
     opacity: 1;
     visibility: visible;
   }
+
+  @media (max-width: 1024px) {
+    .header_sec {
+      background-color: #fff;
+      border-bottom: 2px solid #66a55f;
+    }
+
+    .header_right {
+      display: none;
+    }
+  }

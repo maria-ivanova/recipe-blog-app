@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faChevronDown, faUser, faHeart, faUpload, faTimes, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faUser, faHeart, faUpload, faTimes, faEdit, faBars } from '@fortawesome/free-solid-svg-icons';
 
 import { AuthUserContext } from '../context/context.js';
 import { auth } from "../services/firebase.js";
 
 import ROUTES from '../constants/routes.js';
-import Header from './header.js';
-import Topmenu from './topmenu.js'
+import { Header } from './header.js';
+import Topmenu from './topmenu.js';
 import Footer from './footer.js';
 import Home from './home.js';
 import Login from './login.js';
@@ -24,7 +24,7 @@ import ListPage from './listPage.js';
 import SearchPage from './searchPage.js';
 import NotFound from './notFound.js';
 
-library.add(faChevronDown, faUser, faHeart, faUpload, faTimes, faEdit);
+library.add(faChevronDown, faUser, faHeart, faUpload, faTimes, faEdit, faBars);
 
 class App extends Component {
   constructor(props) {

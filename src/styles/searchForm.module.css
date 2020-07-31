@@ -40,3 +40,27 @@
   .search_form .btn:hover {
     background-image: url(../images/i_search_hover.svg);
   }
+
+  @media (max-width: 1024px) {
+    .search_form {
+      width: 40%;
+    }
+
+    .search_form .input_text {
+      width: 100%;
+    }
+    
+  }
+
+  @media (max-width: 700px) {
+    .search_form {
+      width: 100%;
+      margin-top: 20px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .search_form {
+      width: 80%;
+    }
+  }

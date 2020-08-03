@@ -1,6 +1,8 @@
 ## Spatulas Recipe blog
 github: https://github.com/maria-ivanova
+
 Use HTTPS: https://github.com/maria-ivanova/recipe-blog-app.git
+
 Use SSH: git@github.com:maria-ivanova/recipe-blog-app.git
 
 1. git clone

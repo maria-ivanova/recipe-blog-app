@@ -60,7 +60,7 @@ Recipes created by the current user.
 Add recipes in favorites.
 
 ### Search 
-Search recipes by title, ingredients, recipeDescription, category
+Search recipes by title, ingredients, recipe description, category
 
 ## Models
 ### User model

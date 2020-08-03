@@ -7,8 +7,12 @@ import mainStyles from '../styles/app.module.css';
 import styles from '../styles/searchPage.module.css';
 
 const SearchPage = (props) => {
-    const data = props.location.state.searchItems;
+    let data = [];
 
+    if (props.location.state) {
+        data = props.location.state.searchItems
+    }
+    
     return (
         <PageTitleContext.Provider value="Резултат от търсенето">
             <section className={`${mainStyles.sec} ${mainStyles.content_sec}`}>

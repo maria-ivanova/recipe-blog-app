@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { getData, deleteItem } from '../helpers/firebaseRequests.js';
-import { customErrors } from '../constants/errors.js';
 import ROUTES from '../constants/routes.js';
 
 import SingleItem from './mySingleItem.js';

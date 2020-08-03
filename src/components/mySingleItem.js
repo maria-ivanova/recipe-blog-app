@@ -12,7 +12,7 @@ const MySingleItem = (props) => {
         <div className={styles.item}>
             <Link to={`${ROUTES.DETAILS}/${props.value.id}`}
                 className={styles.item_img}>
-                <img src={props.value.imageUrl} />
+                <img src={props.value.imageUrl} alt="recipe pic"/>
             </Link>
 
             <div className={styles.item_details}>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { postCreate, getCategories } from '../helpers/firebaseRequests.js';
 import { storage } from "../services/firebase.js";
-import { firebaseErrors, customErrors } from '../constants/errors.js';
+import { customErrors } from '../constants/errors.js';
 import ROUTES from '../constants/routes.js';
 
 import WithAuthorization from './withAuthorization.js';
@@ -158,17 +158,13 @@ class Create extends Component {
 
     render() {
         const {
-            creatorId,
             title,
             category,
             totalTime,
             yields,
             image,
-            imageUrl,
             ingredients,
             recipeDescription,
-            likes,
-            likesArr,
             errorMsg,
             allCategories
         } = this.state;

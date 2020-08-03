@@ -61,7 +61,7 @@ class Header extends Component {
 
 							<ul className={styles.menu}>
 								<li>
-									<a>{this.context.email} <FontAwesomeIcon icon="chevron-down" className={styles.fa} /></a>
+									<span>{this.context.email} <FontAwesomeIcon icon="chevron-down" className={styles.fa} /></span>
 									<ul className={styles.submenu}>
 										{authUserSubLinks}
 									</ul>

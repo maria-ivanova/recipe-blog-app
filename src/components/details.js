@@ -97,7 +97,6 @@ class Details extends Component {
 
 	render() {
 		const {
-			creatorId,
 			creatorName,
 			createdDate,
 			title,
@@ -107,8 +106,6 @@ class Details extends Component {
 			imageUrl,
 			ingredients,
 			recipeDescription,
-			likes,
-			likesArr,
 		} = this.state;
 
 		const id = this.props.match.params.id;
@@ -128,13 +125,13 @@ class Details extends Component {
 						<div className={styles.item_layout}>
 							<div className={styles.left_part}>
 								<div className={styles.img_box}>
-									<img src={imageUrl} />
+									<img src={imageUrl} alt="recipe pic"/>
 								</div>
 
 								<div className={styles.features}>
 									<div className={styles.features_item}>
 										<span className={styles.icon}>
-											<img src={iconBook} />
+											<img src={iconBook} alt="book"/>
 										</span>
 
 										<div className={styles.info}>
@@ -145,7 +142,7 @@ class Details extends Component {
 
 									<div className={styles.features_item}>
 										<span className={styles.icon}>
-											<img src={iconAlarm} />
+											<img src={iconAlarm} alt="alarm"/>
 										</span>
 
 										<div className={styles.info}>
@@ -156,7 +153,7 @@ class Details extends Component {
 
 									<div className={styles.features_item}>
 										<span className={styles.icon}>
-											<img src={iconDish} />
+											<img src={iconDish} alt="dish"/>
 										</span>
 
 										<div className={styles.info}>

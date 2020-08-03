@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import { Redirect, withRouter } from 'react-router-dom';
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { getData } from '../helpers/firebaseRequests.js';
 import ROUTES from '../constants/routes.js';
 

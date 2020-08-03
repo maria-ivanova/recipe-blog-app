@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { getCategories, getItemInfo, postEdit } from '../helpers/firebaseRequests.js';
 import { storage } from "../services/firebase.js";
-import { firebaseErrors, customErrors } from '../constants/errors.js';
+import { customErrors } from '../constants/errors.js';
 
 import ROUTES from '../constants/routes.js';
 import WithAuthorization from './withAuthorization.js';
@@ -187,8 +187,6 @@ class Edit extends Component {
             imageUrl,
             ingredients,
             recipeDescription,
-            likes,
-            likesArr,
             errorMsg,
             allCategories
         } = this.state;
@@ -273,7 +271,7 @@ class Edit extends Component {
                             <span className={styles.img_holder}>
                                 {imageUrl ?
                                     <div className={styles.img_box}>
-                                        <img src={imageUrl} alt="recipe image" />
+                                        <img src={imageUrl} alt="recipe pic" />
                                         <span onClick={this.deleteImage}
                                             className={styles.btnDeleteImg}>
 

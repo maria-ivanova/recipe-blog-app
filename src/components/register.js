@@ -57,9 +57,6 @@ class Register extends Component {
 
         registerUser(email, password)
             .then((response) => {
-                const uid = response.user.uid;
-                const data = { username, email };
-
                 if (response) {
                     response.user.updateProfile({
                         displayName: username

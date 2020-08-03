@@ -21,22 +21,22 @@ const IndexInfo = () => {
 
 					<div className={styles.cells_box}>
 						<span className={styles.cell}>
-							<img src={SoupImg} />
+							<img src={SoupImg} alt="soup"/>
 							<span className={styles.title}>Салати</span>
 						</span>
 
 						<span className={styles.cell}>
-							<img src={MainDishImg} />
+							<img src={MainDishImg} alt="dish"/>
 							<span className={styles.title}>Основни ястия</span>
 						</span>
 
 						<span className={styles.cell}>
-							<img src={SoupImg} />
+							<img src={SoupImg} alt="soup"/>
 							<span className={styles.title}>Супи</span>
 						</span>
 
 						<span className={styles.cell}>
-							<img src={DessertImg} />
+							<img src={DessertImg} alt="dessert"/>
 							<span className={styles.title}>Десерти</span>
 						</span>
 					</div>

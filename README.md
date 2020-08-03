@@ -1,9 +1,13 @@
-## Spatulas Recipe blog
+## Spatulas Recipe Blog
 github: https://github.com/maria-ivanova
 
 Use HTTPS: https://github.com/maria-ivanova/recipe-blog-app.git
 
 Use SSH: git@github.com:maria-ivanova/recipe-blog-app.git
+
+You can use test user: 
+user: test@test.com
+password: 123456
 
 1. git clone
 2. npm install

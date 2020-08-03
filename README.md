@@ -1,4 +1,4 @@
-## Spatulas Racipe blog
+## Spatulas Recipe blog
 github: https://github.com/maria-ivanova
 Use HTTPS: https://github.com/maria-ivanova/recipe-blog-app.git
 Use SSH: git@github.com:maria-ivanova/recipe-blog-app.git
@@ -91,7 +91,7 @@ Search recipes by title, ingredients, recipeDescription, category
 |/details/:id|Details recipe page|http://localhost:3000/details/-MDoYJl51ZamVsK3rdyV|
 |/recipes/:categoryName|Recipes page by category|http://localhost:3000/recipes/%D0%A1%D0%B0%D0%BB%D0%B0%D1%82%D0%B8|
 |/myRecipes|Recipes published by the user|http://localhost:3000/myRecipes|
-|/myFavorites|User's favorite recipes|http://localhost:3000/myFavorites"|
+|/myFavorites|User's favorite recipes|http://localhost:3000/myFavorites|
 |/search|Search page|http://localhost:3000/search|
 
 

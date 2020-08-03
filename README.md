@@ -63,6 +63,7 @@ You will also see any lint errors in the console.
 | Route	| Description | Page |
 |-------|-------------|------|
 |/      |Home         |http://localhost:3000/|
+|/login|Login page|http://localhost:3000/login
 
 
 

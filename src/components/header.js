@@ -14,7 +14,7 @@ import styles from '../styles/header.module.css';
 
 const authUserLinks = [
 	<li key='logout'>
-		<Link to={ROUTES.LOGIN} onClick={logout}>Изход</Link>
+		<span onClick={logout}>Изход</span>
 	</li>
 ]
 const authUserSubLinks = [

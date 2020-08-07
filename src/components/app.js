@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect  } from 'react-router-dom';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faChevronDown, faUser, faHeart, faUpload, faTimes, faEdit, faBars } from '@fortawesome/free-solid-svg-icons';
@@ -25,6 +25,7 @@ import ListPage from './listPage.js';
 import SearchPage from './searchPage.js';
 import NotFound from './notFound.js';
 import Error from './errorPage.js';
+import Loader from './loader.js';
 
 library.add(faChevronDown, faUser, faHeart, faUpload, faTimes, faEdit, faBars);
 
@@ -34,8 +35,20 @@ class App extends Component {
 
     this.state = {
       authUser: null,
+      isLoading: true
     };
+
+    this.timer = setTimeout(this.setLoading, 400);
   }
+
+  componentWillUnmount() {
+    clearTimeout(this.timer);
+  }
+
+  setLoading = () => {
+    this.setState({ isLoading: false });
+  }
+  
 
   componentDidMount() {
     auth.onAuthStateChanged(authUser => {
@@ -44,6 +57,10 @@ class App extends Component {
   }
 
   render() {
+    if(this.state.isLoading) {
+      return <Loader/>
+    }
+
     return (
       <ErrorBoundary>
         <AuthUserContext.Provider value={this.state.authUser}>
@@ -53,8 +70,15 @@ class App extends Component {
 
             <Switch>
               <Route exact path={ROUTES.HOME} component={Home} />
-              <Route path={ROUTES.LOGIN} component={Login} />
-              <Route path={ROUTES.REGISTER} component={Register} />
+
+              <Route path={ROUTES.LOGIN} >
+                {this.state.authUser ? (<Redirect to={ROUTES.PROFILE} />) : (<Login />)}
+              </Route>
+
+              <Route path={ROUTES.REGISTER} >
+                {this.state.authUser ? (<Redirect to={ROUTES.PROFILE} />) : (<Register />)}
+              </Route>
+
               <Route path={ROUTES.PROFILE} component={Profile} />
               <Route path={ROUTES.CREATE} component={Create} />
               <Route path={`${ROUTES.EDIT}/:id`} component={Edit} />

@@ -49,7 +49,7 @@ const MySingleItem = (props) => {
                         Редактирай
                     </Link>
 
-                    <button onClick={props.deleteHandler}
+                    <button type="button" onClick={props.deleteHandler}
                         className={`${mainStyles.btn} ${styles.btn} ${styles.btn_del}`}>
                         Изтрий
                     </button>

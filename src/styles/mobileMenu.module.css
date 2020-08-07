@@ -68,11 +68,16 @@
     text-transform: uppercase;
   }
 
-  .mobile_menu a {
+  .mobile_menu a,
+  .mobile_menu span  {
       display: inline-block;
       padding: 12px 20px;
       color: #fff;
       text-transform: none;
+  }
+
+  .mobile_menu span {
+      cursor: pointer;
   }
 
 

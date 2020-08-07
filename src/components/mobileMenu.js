@@ -36,8 +36,6 @@ class MobileMenu extends Component {
         this.setState({
             isOpen: !this.state.isOpen
         })
-
-        console.log(this.state.isOpen)
     }
 
     render() {
@@ -63,7 +61,8 @@ class MobileMenu extends Component {
                             {this.state.links.map(el =>
                                 <li key={el}>
                                     <Link to={`${ROUTES.RECIPES}/${el}`}>{el}</Link>
-                                </li>)}
+                                </li>
+                            )}
 
                             {this.context ?
                                 <Fragment>

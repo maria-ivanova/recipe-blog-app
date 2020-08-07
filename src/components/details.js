@@ -66,7 +66,7 @@ class Details extends Component {
 			likesArr
 		});
 
-		const data = this.state;
+		const data = {...this.state};
 
 		postEdit(itemId, data)
 			.then(response => {

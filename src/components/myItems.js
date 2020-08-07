@@ -42,9 +42,7 @@ class MyItems extends Component {
         await this.setState({ data: dataArr });
     }
 
-    deleteItem = async (id, event) => {
-        event.preventDefault();
-
+    delItem = async (id) => {
         await deleteItem(id)
             .then(response => {
                 notify('success', 'Рецептата беше успeшно изтрита!');
@@ -79,7 +77,7 @@ class MyItems extends Component {
                             {data.length !== 0 ?
                                 data.map(el => <SingleItem key={el.id}
                                     value={el}
-                                    deleteHandler={this.deleteItem.bind(this, el.id)} />)
+                                    deleteHandler={this.delItem.bind(this, el.id)} />)
 
                                 :
 

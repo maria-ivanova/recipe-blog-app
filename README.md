@@ -1,11 +1,14 @@
 ## Spatulas Recipe Blog
+Culinary blog web application. Selection of recipes published by users and grouped by categories.
+Provides the ability to register, log in and log out of user profiles.
+
 github: https://github.com/maria-ivanova
 
 Use HTTPS: https://github.com/maria-ivanova/recipe-blog-app.git
 
 Use SSH: git@github.com:maria-ivanova/recipe-blog-app.git
 
-You can use test user: 
+Тhis user profile can be used for testing:
 user: test@test.com
 password: 123456
 

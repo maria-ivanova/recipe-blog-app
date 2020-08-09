@@ -41,7 +41,7 @@ class SearchForm extends Component {
             .filter(el => regex.test(el.title) || regex.test(el.ingredients) || regex.test(el.recipeDescription) || regex.test(el.category))
         }
 
-        await this.setState({ data: dataArr });
+        this.setState({ data: dataArr });
         this.props.history.push(ROUTES.SEARCH, {searchItems: this.state.data})
         this.setState({...INITIAL_STATE});
     }

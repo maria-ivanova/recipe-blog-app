@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch, Redirect  } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faChevronDown, faUser, faHeart, faUpload, faTimes, faEdit, faBars } from '@fortawesome/free-solid-svg-icons';
@@ -37,28 +37,28 @@ class App extends Component {
       authUser: null,
       isLoading: true
     };
+  }
 
-    this.timer = setTimeout(this.setLoading, 400);
+  setLoading = () => {
+    this.setState({ isLoading: false });
+  }
+
+  componentDidMount() {
+   auth.onAuthStateChanged(authUser => {
+      this.setState({ authUser });
+    });
+
+    this.timer = setTimeout(this.setLoading, 1000);
   }
 
   componentWillUnmount() {
     clearTimeout(this.timer);
   }
 
-  setLoading = () => {
-    this.setState({ isLoading: false });
-  }
-  
-
-  componentDidMount() {
-    auth.onAuthStateChanged(authUser => {
-      this.setState({ authUser });
-    })
-  }
 
   render() {
-    if(this.state.isLoading) {
-      return <Loader/>
+    if (this.state.isLoading) {
+      return <Loader />
     }
 
     return (

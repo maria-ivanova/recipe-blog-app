@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Index Banner Component should render layout 1`] = `
+<section
+  className="sec banner_sec"
+>
+  <div
+    className="banner_item"
+  >
+    <h2
+      className="title"
+    >
+      Сготви бързо и лесно с 
+      <br />
+      <span>
+        Spatulas.bg
+      </span>
+    </h2>
+    <a
+      className="btn btn"
+      href="/recipes/Всички рецепти"
+      onClick={[Function]}
+    >
+      Всички рецепти
+    </a>
+  </div>
+</section>
+`;

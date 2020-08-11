@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`My items page Component should render layout missing items 1`] = `
+Array [
+  <div
+    className="notifications 
+                             null 
+                             "
+  >
+    <span>
+      
+    </span>
+  </div>,
+  <section
+    className="sec"
+  >
+    <div
+      className="banner_item"
+    >
+      <h2
+        className="title"
+      >
+        Моите рецепти
+      </h2>
+    </div>
+  </section>,
+  <section
+    className="sec content_sec"
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="items_list my_list"
+      >
+        <div
+          className="inner_text"
+        >
+          <h3>
+            Все още нямате създадени рецепти!
+          </h3>
+          <a
+            className="btn btn"
+            href="/create"
+            onClick={[Function]}
+          >
+            Създай рецепта
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>,
+]
+`;

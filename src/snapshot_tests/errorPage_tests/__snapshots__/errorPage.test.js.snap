@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error page Component should render page layout 1`] = `
+<section
+  className="sec content_sec"
+>
+  <div
+    className="container tcenter"
+  >
+    <h2
+      className="page_title"
+    >
+      <span>
+        Грешка
+      </span>
+    </h2>
+    <h3>
+      Съжаляваме, но възникна грешка
+    </h3>
+  </div>
+</section>
+`;

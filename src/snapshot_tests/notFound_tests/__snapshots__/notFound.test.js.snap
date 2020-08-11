@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Not Found Component should render page layout 1`] = `
+<section
+  className="sec content_sec"
+>
+  <div
+    className="container tcenter"
+  >
+    <h2
+      className="page_title"
+    >
+      <span>
+        Страницата не е намерена
+      </span>
+    </h2>
+    <h3>
+      Съжаляваме, но страницата, която търсите не съществува.
+    </h3>
+  </div>
+</section>
+`;

@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer Component should render layout 1`] = `
+Array [
+  <footer
+    className="sec content_sec footer_sec"
+  >
+    <div
+      className="container container"
+    >
+      <Logo />
+      <p>
+        Наслаждавай се на вкусната храна със съветите на Spatulas.bg.
+        <br />
+        Готви с хиляди кулинари от всички краища на страната!
+      </p>
+      <p>
+        Свържете се с нас: 
+        <a
+          href="mailto:spatulas@info.bg"
+        >
+          spatulas@info.bg
+        </a>
+      </p>
+    </div>
+  </footer>,
+  <section
+    className="sec copyrights"
+  >
+    <div
+      className="container container"
+    >
+      <div
+        className="ib"
+      >
+        2020 Spatulas Всички права запазени
+      </div>
+    </div>
+  </section>,
+]
+`;

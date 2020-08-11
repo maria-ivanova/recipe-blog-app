@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Notifications Component should render layout 1`] = `
+<div
+  className="notifications 
+                             null 
+                             "
+>
+  <span>
+    
+  </span>
+</div>
+`;

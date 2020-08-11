@@ -9,7 +9,7 @@ import { AuthUserContext } from '../context/context.js';
 import mainStyles from '../styles/app.module.css';
 import styles from '../styles/favorites.module.css';
 
-class Favotites extends Component {
+class Favorites extends Component {
     static contextType = AuthUserContext;
 
     constructor(props) {
@@ -79,4 +79,4 @@ class Favotites extends Component {
 }
 
 const condition = authUser => authUser != null;
-export default WithAuthorization(condition, Favotites);
+export default WithAuthorization(condition, Favorites);

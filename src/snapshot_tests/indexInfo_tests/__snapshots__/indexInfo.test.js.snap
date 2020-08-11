@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Index Info Component should render layout 1`] = `
+<section
+  className="sec content_sec bg_sec"
+>
+  <div
+    className="container"
+  >
+    <h2
+      className="page_title"
+    >
+      <span>
+        
+      </span>
+    </h2>
+    <div
+      className="inner_txt"
+    >
+      На нашия уебсайт можете да намерите селекции от рецепти, групирани по категории, 
+      <br />
+      написани от хиляди кулинари от всички краища на страната!
+    </div>
+    <div
+      className="cells_box"
+    >
+      <span
+        className="cell"
+      >
+        <img
+          alt="soup"
+          src="i_soup.svg"
+        />
+        <span
+          className="title"
+        >
+          Салати
+        </span>
+      </span>
+      <span
+        className="cell"
+      >
+        <img
+          alt="dish"
+          src="i_mainDish.svg"
+        />
+        <span
+          className="title"
+        >
+          Основни ястия
+        </span>
+      </span>
+      <span
+        className="cell"
+      >
+        <img
+          alt="soup"
+          src="i_soup.svg"
+        />
+        <span
+          className="title"
+        >
+          Супи
+        </span>
+      </span>
+      <span
+        className="cell"
+      >
+        <img
+          alt="dessert"
+          src="i_dessert.svg"
+        />
+        <span
+          className="title"
+        >
+          Десерти
+        </span>
+      </span>
+    </div>
+  </div>
+</section>
+`;

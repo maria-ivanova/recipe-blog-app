@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Favorites page Component should render layout empty favorites items 1`] = `
+Array [
+  <section
+    className="sec"
+  >
+    <div
+      className="banner_item"
+    >
+      <h2
+        className="title"
+      >
+        Любими рецепти
+      </h2>
+    </div>
+  </section>,
+  <section
+    className="sec content_sec"
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="items_list my_list"
+      >
+        <div
+          className="inner_text"
+        >
+          <h3>
+            Все още нямате любими рецепти!
+          </h3>
+        </div>
+      </div>
+    </div>
+  </section>,
+]
+`;

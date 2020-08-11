@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Topmenu Component should render layout without categories 1`] = `
+<section
+  className="sec nav_sec"
+>
+  <div
+    className="container"
+  >
+    <nav
+      className="topmenu"
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        Начало
+      </a>
+    </nav>
+  </div>
+</section>
+`;

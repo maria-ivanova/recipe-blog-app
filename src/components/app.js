@@ -72,11 +72,11 @@ class App extends Component {
               <Route exact path={ROUTES.HOME} component={Home} />
 
               <Route path={ROUTES.LOGIN} >
-                {this.state.authUser ? (<Redirect to={ROUTES.PROFILE} />) : (<Login />)}
+                {this.state.authUser ? (<Redirect to={ROUTES.HOME} />) : (<Login />)}
               </Route>
 
               <Route path={ROUTES.REGISTER} >
-                {this.state.authUser ? (<Redirect to={ROUTES.PROFILE} />) : (<Register />)}
+                {this.state.authUser ? (<Redirect to={ROUTES.HOME} />) : (<Register />)}
               </Route>
 
               <Route path={ROUTES.PROFILE} component={Profile} />

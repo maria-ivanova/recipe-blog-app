@@ -1,0 +1,122 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Register Component should render page layout 1`] = `
+<section
+  className="sec content_sec"
+>
+  <div
+    className="container tcenter"
+  >
+    <h2
+      className="page_title"
+    >
+      <span>
+        Регистрация
+      </span>
+    </h2>
+    <form
+      className="user_form"
+      onSubmit={[Function]}
+    >
+      <div
+        className="input_row"
+      >
+        <label
+          className="lbl"
+        >
+          Потребителско име 
+          <span
+            className="tred"
+          >
+            *
+          </span>
+        </label>
+        <input
+          className="input_text input_text"
+          name="username"
+          onChange={[Function]}
+          required={true}
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        className="input_row"
+      >
+        <label
+          className="lbl"
+        >
+          Имейл 
+          <span
+            className="tred"
+          >
+            *
+          </span>
+        </label>
+        <input
+          className="input_text input_text"
+          name="email"
+          onChange={[Function]}
+          required={true}
+          type="email"
+          value=""
+        />
+      </div>
+      <div
+        className="input_row"
+      >
+        <label
+          className="lbl"
+        >
+          Парола 
+          <span
+            className="tred"
+          >
+            *
+          </span>
+        </label>
+        <input
+          className="input_text input_text"
+          name="password"
+          onChange={[Function]}
+          required={true}
+          type="password"
+          value=""
+        />
+      </div>
+      <div
+        className="input_row"
+      >
+        <label
+          className="lbl"
+        >
+          Повтори паролата 
+          <span
+            className="tred"
+          >
+            *
+          </span>
+        </label>
+        <input
+          className="input_text input_text"
+          name="rePassword"
+          onChange={[Function]}
+          required={true}
+          type="password"
+          value=""
+        />
+      </div>
+      <div
+        className="input_row"
+      >
+        <button
+          className="btn"
+          type="submit"
+        >
+          Регистрирай се
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+`;

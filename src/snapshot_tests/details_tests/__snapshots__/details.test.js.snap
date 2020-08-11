@@ -1,0 +1,382 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Details Component should render page layout with auth user 1`] = `
+Array [
+  <div
+    className="notifications 
+                             null 
+                             "
+  >
+    <span>
+      
+    </span>
+  </div>,
+  <section
+    className="sec"
+  >
+    <div
+      className="banner_item"
+    >
+      <h2
+        className="title"
+      >
+        
+      </h2>
+    </div>
+  </section>,
+  <section
+    className="sec content_sec"
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="item_layout"
+      >
+        <div
+          className="left_part"
+        >
+          <div
+            className="img_box"
+          >
+            <img
+              alt="recipe pic"
+              src=""
+            />
+          </div>
+          <div
+            className="features"
+          >
+            <div
+              className="features_item"
+            >
+              <span
+                className="icon"
+              >
+                <img
+                  alt="book"
+                  src="i_book.svg"
+                />
+              </span>
+              <div
+                className="info"
+              >
+                <span
+                  className="title"
+                >
+                  Категория
+                </span>
+                <br />
+                <span>
+                  
+                </span>
+              </div>
+            </div>
+            <div
+              className="features_item"
+            >
+              <span
+                className="icon"
+              >
+                <img
+                  alt="alarm"
+                  src="i_alarm.svg"
+                />
+              </span>
+              <div
+                className="info"
+              >
+                <span
+                  className="title"
+                >
+                  Време за приготвяне
+                </span>
+                <br />
+                <span>
+                  
+                </span>
+              </div>
+            </div>
+            <div
+              className="features_item"
+            >
+              <span
+                className="icon"
+              >
+                <img
+                  alt="dish"
+                  src="i_dish.svg"
+                />
+              </span>
+              <div
+                className="info"
+              >
+                <span
+                  className="title"
+                >
+                  Порции
+                </span>
+                <br />
+                <span>
+                  
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="right_part"
+        >
+          <h2
+            className="page_title"
+          >
+            
+          </h2>
+          <h3
+            className="inner_title"
+          >
+            Необходими съставки:
+          </h3>
+          <div
+            className="row"
+          >
+            
+          </div>
+        </div>
+        <div
+          className="description"
+        >
+          <h3
+            className="inner_title"
+          >
+            Начин на приготвяне:
+          </h3>
+          <div
+            className="row"
+          >
+            
+          </div>
+        </div>
+        <div
+          className="item_meta"
+        >
+          <div
+            className="meta_info"
+          >
+            Публикувано от 
+            <span>
+              
+            </span>
+             на  
+            <span>
+              1970 M01 01
+            </span>
+          </div>
+          <button
+            className="btn btn"
+            onClick={[Function]}
+          >
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-heart fa-w-16 fa"
+              data-icon="heart"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              style={Object {}}
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"
+                fill="currentColor"
+                style={Object {}}
+              />
+            </svg>
+            Добави в любими
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>,
+]
+`;
+
+exports[`Details Component should render page layout with non-auth user 1`] = `
+Array [
+  <div
+    className="notifications 
+                             null 
+                             "
+  >
+    <span>
+      
+    </span>
+  </div>,
+  <section
+    className="sec"
+  >
+    <div
+      className="banner_item"
+    >
+      <h2
+        className="title"
+      >
+        
+      </h2>
+    </div>
+  </section>,
+  <section
+    className="sec content_sec"
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="item_layout"
+      >
+        <div
+          className="left_part"
+        >
+          <div
+            className="img_box"
+          >
+            <img
+              alt="recipe pic"
+              src=""
+            />
+          </div>
+          <div
+            className="features"
+          >
+            <div
+              className="features_item"
+            >
+              <span
+                className="icon"
+              >
+                <img
+                  alt="book"
+                  src="i_book.svg"
+                />
+              </span>
+              <div
+                className="info"
+              >
+                <span
+                  className="title"
+                >
+                  Категория
+                </span>
+                <br />
+                <span>
+                  
+                </span>
+              </div>
+            </div>
+            <div
+              className="features_item"
+            >
+              <span
+                className="icon"
+              >
+                <img
+                  alt="alarm"
+                  src="i_alarm.svg"
+                />
+              </span>
+              <div
+                className="info"
+              >
+                <span
+                  className="title"
+                >
+                  Време за приготвяне
+                </span>
+                <br />
+                <span>
+                  
+                </span>
+              </div>
+            </div>
+            <div
+              className="features_item"
+            >
+              <span
+                className="icon"
+              >
+                <img
+                  alt="dish"
+                  src="i_dish.svg"
+                />
+              </span>
+              <div
+                className="info"
+              >
+                <span
+                  className="title"
+                >
+                  Порции
+                </span>
+                <br />
+                <span>
+                  
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="right_part"
+        >
+          <h2
+            className="page_title"
+          >
+            
+          </h2>
+          <h3
+            className="inner_title"
+          >
+            Необходими съставки:
+          </h3>
+          <div
+            className="row"
+          >
+            
+          </div>
+        </div>
+        <div
+          className="description"
+        >
+          <h3
+            className="inner_title"
+          >
+            Начин на приготвяне:
+          </h3>
+          <div
+            className="row"
+          >
+            
+          </div>
+        </div>
+        <div
+          className="item_meta"
+        >
+          <div
+            className="meta_info"
+          >
+            Публикувано от 
+            <span>
+              
+            </span>
+             на  
+            <span>
+              1970 M01 01
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>,
+]
+`;

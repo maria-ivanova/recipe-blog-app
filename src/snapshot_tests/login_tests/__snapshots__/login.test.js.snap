@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login Component should render page layout 1`] = `
+<section
+  className="sec content_sec"
+>
+  <div
+    className="container tcenter"
+  >
+    <h2
+      className="page_title"
+    >
+      <span>
+        Вход
+      </span>
+    </h2>
+    <form
+      className="user_form"
+      onSubmit={[Function]}
+    >
+      <div
+        className="input_row"
+      >
+        <label
+          className="lbl"
+        >
+          Имейл 
+          <span
+            className="tred"
+          >
+            *
+          </span>
+        </label>
+        <input
+          className="input_text input_text"
+          name="email"
+          onChange={[Function]}
+          required={true}
+          type="email"
+          value=""
+        />
+      </div>
+      <div
+        className="input_row"
+      >
+        <label
+          className="lbl"
+        >
+          Парола 
+          <span
+            className="tred"
+          >
+            *
+          </span>
+        </label>
+        <input
+          className="input_text input_text"
+          name="password"
+          onChange={[Function]}
+          required={true}
+          type="password"
+          value=""
+        />
+      </div>
+      <div
+        className="input_row"
+      >
+        <button
+          className="btn"
+          type="submit"
+        >
+          Влез
+        </button>
+      </div>
+      <div
+        className="input_row"
+      >
+        Все още нямаш профил? 
+        <a
+          href="/register"
+          onClick={[Function]}
+        >
+          Регистрирай се
+        </a>
+      </div>
+    </form>
+  </div>
+</section>
+`;

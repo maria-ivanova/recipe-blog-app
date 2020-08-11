@@ -96,8 +96,8 @@ Search recipes by title, ingredients, recipe description, category
 |/register|Register page|http://localhost:3000/register|
 |/profile|Profile page|http://localhost:3000/profile|
 |/create|Create a new recipe|http://localhost:3000/create|
-|/edit/:id|Edit recipe|http://localhost:3000/edit/-MDoYJl51ZamVsK3rdyV|
-|/details/:id|Details recipe page|http://localhost:3000/details/-MDoYJl51ZamVsK3rdyV|
+|/edit/:id|Edit recipe|http://localhost:3000/edit/-MERIK5gpVS9e_lk7CvH|
+|/details/:id|Details recipe page|http://localhost:3000/details/-MERIK5gpVS9e_lk7CvH|
 |/recipes/:categoryName|Recipes page by category|http://localhost:3000/recipes/%D0%A1%D0%B0%D0%BB%D0%B0%D1%82%D0%B8|
 |/myRecipes|Recipes published by the user|http://localhost:3000/myRecipes|
 |/myFavorites|User's favorite recipes|http://localhost:3000/myFavorites|

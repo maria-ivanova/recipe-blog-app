@@ -20,7 +20,7 @@ describe('Edit Component', () => {
         expect(tree).toMatchSnapshot();
     })
 
-    it('should set new input value when state has been changed', async () => {
+    it('should set new input value when state has been changed', () => {
         const wrapper = mount(shallow(
             <Routing value={{ displayName: "test", email: "test@test.com", uid: "1" }}>
                 <Edit match={{ params: { id: '1' } }}/>
@@ -34,7 +34,7 @@ describe('Edit Component', () => {
         expect(component.find('input[name="title"]').prop('value')).toEqual('test title');
       });
 
-      it('should change the state title when onChange function of the title input is invoked', async () => {
+      it('should change the state title when onChange function of the title input is invoked', () => {
         const wrapper = mount(shallow(
             <Routing value={{ displayName: "test", email: "test@test.com", uid: "vMmkqnOVIzQ2PjtoBZ9IkogAtt22" }}>
                 <Edit match={{ params: { id: '1' } }}/>

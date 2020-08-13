@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List page Component should render page layout 1`] = `
+Array [
+  <section
+    className="sec"
+  >
+    <div
+      className="banner_item"
+    >
+      <h2
+        className="title"
+      >
+        test category
+      </h2>
+    </div>
+  </section>,
+  <ItemsList
+    filerCriterion="category"
+    hiddenPageTitle="yes"
+    secondFilterCriterion="test category"
+  />,
+]
+`;

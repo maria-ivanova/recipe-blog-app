@@ -1,5 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import { mount } from 'enzyme';
 import Routing from '../helpers/router.js';
 import Profile from '../../components/profile.js';
 
